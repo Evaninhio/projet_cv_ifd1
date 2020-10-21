@@ -10,7 +10,7 @@
 
 <body class="text-center">
 
-<form class="form-signin">
+<form class="form-signin" method="post" action="formulaire_connexion.php">
 
     <img class="mb-4" src="../images/téléchargement.png" alt="logo_site" width="72" height="72">
 
@@ -20,12 +20,12 @@
 
     <div class="form-group">
         <label>Adresse Email
-            <input type="email" class="form-control" placeholder="xxxxxxx@xxxxx.com">
+            <input type="email" class="form-control" placeholder="xxxxxxx@xxxxx.com" name="email" required>
         </label>
     </div>
     <div class="form-group">
         <label>Password
-            <input type="password" class="form-control" placeholder="Mot de passe">
+            <input type="password" class="form-control" placeholder="Mot de passe" name="password" required>
         </label>
     </div>
 
@@ -37,7 +37,7 @@
         </label>
     </div>
     <br>
-    <button type="button" class="btn btn-success">Connexion</button>
+    <button type="submit" class="btn btn-success">Connexion</button>
 </form>
 </body>
 </html>
