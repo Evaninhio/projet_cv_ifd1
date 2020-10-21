@@ -9,7 +9,7 @@
 
 <body>
 
-<form method="post" action="formulaire.php">
+<form method="post" action="formulaire_insert.php">
 
     <!--formulaire inscription nouvel utilisateur-->
 
@@ -23,7 +23,8 @@
     <br>
          <label>
             Email : <input type="text" name="email" required/>
-        </label>
+
+         </label>
     <br>
          <label>
             Adresse : <input type="text" name="adresse_actuelle" required />
@@ -38,19 +39,19 @@
         </label>
     <br>
         <label>
-            Mot de passe: <input type="password" name="password" required>
+            Mot de passe: <input type="password" name="password" min="8" required>
         </label>
     <br>
         <label>
-            Lien linkedin: <input type="text" name="lien_linkedin" >
+            Lien linkedin: <input type="text" name="lien_linkedin">
         </label>
     <br>
         <label>
-            Biographie: <TEXTAREA name="biographie"  maxlength="200"></TEXTAREA>
+            Biographie: <TEXTAREA name="biographie" maxlength="200"></TEXTAREA>
         </label>
     <br>
         <label>
-            Numéro de Téléphone: <input type="tel"  name="num_telephone" pattern="[0-9]{10}">
+            Numéro de Téléphone: <input type="number"  name="num_telephone" pattern="[0-9]{10}">
         </label>
     <br>
         <label>

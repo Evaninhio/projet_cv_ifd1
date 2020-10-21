@@ -15,7 +15,7 @@
     <ul id="menu">
         <li><a href="#second_section">Qui sommes-nous ?</a></li>
         <li><a href="#²">Essayer maintenant! </a></li>
-        <li><a href="inscription.html">Inscription</a></li>
+        <li><a href="inscription.php">Inscription</a></li>
         <li><a href="connexion.html">Connexion<img src="kisspng-india-login-computer-icons-emoticon-medicine-user-login-icon-5ab05c8bc2f8d1.4479395815215074677986.jpg" alt="photo profil"></a></li>
 
     </ul>
