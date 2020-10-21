@@ -27,7 +27,7 @@ else
 {
 
     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-    $req=$bdd->prepare("INSERT INTO utilisateur VALUES ('$email','$nom','$prenom','$adresse_actuelle','$ville_de_residence','$lien_linkedin','$date_naissance','$password','$biographie','$num_telephone','$photo_profil');");
+    $req=$bdd->prepare("INSERT INTO utilisateur VALUES ('$email','$nom','$prenom','$adresse_actuelle','$ville_de_residence','$lien_linkedin','$date_naissance',PASSWORD('$password'),'$biographie','$num_telephone','$photo_profil');");
     $req->execute();
 }
 
