@@ -10,6 +10,9 @@
 <body>
 
 <form method="post" action="formulaire.php">
+
+    <!--formulaire inscription nouvel utilisateur-->
+
         <label>
             Nom : <input type="text" name="nom" required/>
         </label>
@@ -29,9 +32,9 @@
         <label>
             Ville de residence : <input type="text" name="ville_de_residence" required />
         </label>
-   <br>
+    <br>
         <label>
-            Date de naissance: <input type="date" name="date_naissance" value="date"  min="2018-01-01" max="2018-12-31">
+            Date de naissance: <input type="date" name="date_naissance" value="<?php echo $today = date("Y-m-d")?>" max= "<?php echo $today = date("Y-m-d")?>"  required />
         </label>
     <br>
         <label>
@@ -43,19 +46,18 @@
         </label>
     <br>
         <label>
-            Biographie: <TEXTAREA name="biographie" rows=10 COLS=40></TEXTAREA>
+            Biographie: <TEXTAREA name="biographie"  maxlength="200"></TEXTAREA>
         </label>
     <br>
         <label>
-            Numéro de Téléphone: <input type="tel"  name="num_telephone" pattern="[0-9]{10}" required>
+            Numéro de Téléphone: <input type="tel"  name="num_telephone" pattern="[0-9]{10}">
         </label>
     <br>
         <label>
             Photo de profil: <input type="file" name="photo_profil" accept="image/jpeg, image/png">
          </label>
 
-
-    <input type="submit" value="Créer un compte! "/>
+    <input type="submit" value=" Créer un compte! "/>
 </form>
 
 
