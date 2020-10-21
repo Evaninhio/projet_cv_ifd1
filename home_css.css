@@ -6,7 +6,7 @@
 
 #welcome{
     position: relative;
-    right: 1.5%;
+    right: 15%;
     top: -20%;
     font-size: 3em;
     text-align: left;
@@ -91,16 +91,16 @@ section{
 
 #slogan_home{
     position: relative;
-    right:300px;
-    bottom: 200px;
+    right:15%;
+    bottom:25%;
     font-size: 2em;
 }
 
 #arguments{
     background:#1fe0 ;
     position: relative;
-    right:300px;
-    bottom: 200px;
+    right:21%;
+    bottom: 20%;
 }
 #arguments li{
     list-style-type: none;
@@ -109,12 +109,12 @@ section{
 }
 #stat{
     position: relative;
-    right: 300px;
+    right:20%;
     text-align:center;
     width: 500px;
     border-radius: 15px;
     background-color: red;
-    bottom: 125px;
+    bottom: 5%;
 }
 
 

@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>My Online CV- Le job de vos rêves est à portée de main ! </title>
+    <link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.css">
 </head>
 
 
 <body>
+
+
+
 
 <form method="post" action="formulaire_insert.php">
 
@@ -60,9 +64,6 @@
 
     <input type="submit" value=" Créer un compte! "/>
 </form>
-
-
-
 
 </body>
 
