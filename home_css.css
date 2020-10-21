@@ -1,0 +1,184 @@
+*{
+    font-family: "Arial Nova";
+    text-align: center;
+    /*on passe tout dans la meme police*/
+}
+
+#welcome{
+    position: relative;
+    right: 1.5%;
+    top: -20%;
+    font-size: 3em;
+    text-align: left;
+    color: goldenrod;
+    /*proprietes du texte welcome*/
+}
+
+body{
+    margin:0;
+    /*on supprime les marges du body*/
+}
+
+section{
+    box-sizing: border-box;
+    height: 100vh;
+    text-align: center;
+    padding: 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /*argument de chaque section*/
+}
+
+.first_section{
+    text-transform: uppercase;
+    color: white;
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    background-image:url("1496758757-26363016946907.jpg");
+
+}
+#second_section{
+    background-image:url("a3f7376a5bf610715caac564f79690f7.jpg");
+}
+
+#fond_menu,#arguments{
+    box-sizing: border-box;
+    height: 2vw;
+    text-align: center;
+    padding: 1.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: gold;
+}
+
+#fond_menu{
+    width: auto;
+    height:60px;
+}
+
+#menu{
+    display: table;
+
+}
+
+#menu li {
+    display: table-cell;
+    width: 400px;
+
+}
+
+#menu li a{
+   color: black;
+    text-decoration: none;
+}
+
+#fond_menu:hover{
+    background-color: darksalmon;
+}
+
+#menu li a:hover{
+    color: white;
+}
+
+#slogan_home{
+    position: relative;
+    right:300px;
+    bottom: 200px;
+    font-size: 2em;
+}
+
+#arguments{
+    background:#1fe0 ;
+    position: relative;
+    right:300px;
+    bottom: 200px;
+}
+#arguments li{
+    list-style-type: none;
+    text-align: left;
+    top:100px;
+}
+#stat{
+    position: relative;
+    right: 300px;
+    text-align:center;
+    width: 500px;
+    border-radius: 15px;
+    background-color: red;
+    bottom: 125px;
+}
+
+
+#stat p strong{
+    color: cyan;
+    font-size: 1.5em;
+}
+
+#menu li img{
+    height: 25px;
+    position: relative;
+    left:15px;
+    top:5px;
+    border-radius: 100%;
+}
+
+#ex_cv{
+    position:absolute;
+    left:900px;
+    bottom:-370px;
+    height:500px;
+}
+
+#fond_bandereau_fin{
+    box-sizing: border-box;
+    height: 2vw;
+    text-align: center;
+    padding: 1.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: gold;
+}
+
+#bandereau_fin{
+    display: table;
+    list-style-type: none;
+}
+
+#bandereau_fin li{
+    display: table-cell;
+
+}
+#bandereau_fin li a {
+    text-decoration: none;
+    color:black;
+    text-align: center;
+}
+
+#bandereau_fin li a:hover{
+    color: blueviolet;
+}
+
+
+#bandereau_fin li img{
+    width: 80px;
+    position: absolute;
+    left:50px;
+}
+
+
+
+
