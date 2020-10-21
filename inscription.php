@@ -7,7 +7,7 @@
 </head>
 
 
-<br>
+<body>
 
 <form method="post" action="formulaire.php">
         <label>
