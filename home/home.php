@@ -14,9 +14,9 @@
 
     <ul id="menu">
         <li><a href="#second_section">Qui sommes-nous ?</a></li>
-        <li><a href="#²">Essayer maintenant! </a></li>
-        <li><a href="inscription.php">Inscription</a></li>
-        <li><a href="connexion.html">Connexion<img src="kisspng-india-login-computer-icons-emoticon-medicine-user-login-icon-5ab05c8bc2f8d1.4479395815215074677986.jpg" alt="photo profil"></a></li>
+        <li><a href="#">Essayer maintenant! </a></li>
+        <li><a href="../connexion_inscription/inscription.php">Inscription</a></li>
+        <li><a href="../connexion_inscription/connexion.php">Connexion<img src="../images/kisspng-india-login-computer-icons-emoticon-medicine-user-login-icon-5ab05c8bc2f8d1.4479395815215074677986.jpg" alt="photo profil"></a></li>
 
     </ul>
 
@@ -50,7 +50,7 @@
         <li>Profitez des conseils et astuces de nos experts gratuitement</li>
     </ul>
 
-     <img id="ex_cv" src="86-modele-cv-parfait.jpg" alt="exemple_cv">
+     <img id="ex_cv" src="../images/86-modele-cv-parfait.jpg" alt="exemple_cv">
 
     </div>
 
@@ -97,7 +97,7 @@
 <div id="fond_bandereau_fin">
     <ul id="bandereau_fin">
         <li><a href="mailto:corentin.latimier@utbm.fr">Nous contacter</li>
-        <li><a href="www.utbm.fr"><img src="1200px-Utbm.svg.png" alt="logo_utbm"</li>
+        <li><a href="www.utbm.fr"><img src="../images/1200px-Utbm.svg.png" alt="logo_utbm"</li>
     </ul>
 
 </div>

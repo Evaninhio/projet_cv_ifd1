@@ -38,11 +38,11 @@ section{
     text-transform: uppercase;
     color: white;
     text-shadow: 0 0 5px rgba(0,0,0,0.4);
-    background-image:url("1496758757-26363016946907.jpg");
+    background-image:url("../images/1496758757-26363016946907.jpg");
 
 }
 #second_section{
-    background-image:url("a3f7376a5bf610715caac564f79690f7.jpg");
+    background-image:url("../images/a3f7376a5bf610715caac564f79690f7.jpg");
 }
 
 #fond_menu,#arguments{

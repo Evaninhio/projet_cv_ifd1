@@ -4,10 +4,6 @@ html,
   font-family: "Arial Nova";
 }
 
-
-
-
-
 body {
   display: -ms-flexbox;
   display: flex;
@@ -16,7 +12,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   height: 100%;
-  background-image: url("95cdfeef.jpg");
+  background-image: url("../images/95cdfeef.jpg");
   background-position: top;
   background-size: 100%;
 
