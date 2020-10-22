@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 $email=$_POST["email"];
 $password=$_POST["password"];
 
@@ -15,7 +13,7 @@ echo $data[0];
 
 if($data[0]==0)
 {
-    header("Location: connexion.php");
+    header("Location: connexion.php?error=1");
     exit();
 }
 else{
@@ -23,8 +21,7 @@ else{
     $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
     $req=$bdd->prepare("SELECT prenom,photo_profil from utilisateur where email='$email';");
     $data=$req->fetch();
-    $_SESSION["prenom"]=$data[0];
-    $_SESSION["is_connected"]=1;
+    $_SESSION['prenom']=$data[0];
     header("Location: ../home/home.php");
 }
 

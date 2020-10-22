@@ -47,10 +47,6 @@ session_start();
             echo"<h1 id='welcome'> Bonne matinée sur My Online CV</h1>";
         }
 
-        if ($id_session){
-            echo $_SESSION["prenom"];
-        }
-
 
     ?>
 

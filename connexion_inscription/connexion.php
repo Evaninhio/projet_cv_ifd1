@@ -38,6 +38,15 @@ session_start();
 
 
     <div class="checkbox mb-3">
+
+        <div id="error">
+        <?php
+        if (isset($_GET['error']))
+        { echo "<p>Erreur lors de la saisie de l'email ou du mot de passe</p>";
+        }
+        ?>
+        </div>
+
         <label>
             <input type="checkbox" value="remember-me"> Se souvenir de moi
         </label>
