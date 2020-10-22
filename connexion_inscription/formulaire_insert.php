@@ -1,6 +1,5 @@
-
-
 <?php
+
 $nom=strtoupper($_POST["nom"]);
 $prenom=strtoupper($_POST["prenom"]);
 $email=$_POST["email"];

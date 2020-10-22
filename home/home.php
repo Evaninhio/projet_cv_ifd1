@@ -1,3 +1,9 @@
+
+<?php
+session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,6 +15,7 @@
 
 
 <body>
+
 
 <div id="fond_menu">
 
@@ -26,18 +33,24 @@
 
     <?php
     $now=date( "H");
+
         if($now>12 && $now<20)
         {
-           echo"<h1 id='welcome'> Bonne après midi sur My Online CV.</h1>";
+           echo"<h1 id='welcome'> Bonne après midi sur My Online CV</h1>";
         }
         else if ($now>20 )
         {
-            echo"<h1 id='welcome'> Bonne soirée sur My Online CV.</h1>";
+            echo"<h1 id='welcome'> Bonne soirée sur My Online CV</h1>";
         }
         else
         {
-            echo"<h1 id='welcome'> Bonne matinée sur My Online CV.</h1>";
+            echo"<h1 id='welcome'> Bonne matinée sur My Online CV</h1>";
         }
+
+        if ($id_session){
+            echo $_SESSION["prenom"];
+        }
+
 
     ?>
 
