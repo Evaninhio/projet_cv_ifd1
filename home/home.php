@@ -47,7 +47,7 @@ session_start();
             echo"<h1 id='welcome'> Bonne matinée sur My Online CV</h1>";
         }
 
-
+        echo $_SESSION["prenom"];
     ?>
 
     <p id="slogan_home">Rédigez un CV n'a jamais été aussi simple! </p>

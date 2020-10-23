@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 $email=$_POST["email"];
 $password=$_POST["password"];
@@ -21,6 +21,7 @@ else{
     $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
     $req=$bdd->prepare("SELECT prenom,photo_profil from utilisateur where email='$email';");
     $data=$req->fetch();
+    session_start();
     $_SESSION['prenom']=$data[0];
     header("Location: ../home/home.php");
 }
