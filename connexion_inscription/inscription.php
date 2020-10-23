@@ -26,7 +26,7 @@
         </label>
     <br>
          <label>
-            Email : <input type="text" name="email" required/>
+            Email : <input type="email" name="email" required/>
 
          </label>
     <br>
