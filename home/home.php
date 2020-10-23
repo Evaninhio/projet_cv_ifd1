@@ -106,7 +106,7 @@ session_start();
 <div id="fond_bandereau_fin">
     <ul id="bandereau_fin">
         <li><a href="mailto:corentin.latimier@utbm.fr">Nous contacter</li>
-        <li><a href="www.utbm.fr"><img src="../images/1200px-Utbm.svg.png" alt="logo_utbm"</li>
+        <li><a href="http://www.utbm.fr"><img src="../images/1200px-Utbm.svg.png" alt="logo_utbm"</li>
     </ul>
 
 </div>
