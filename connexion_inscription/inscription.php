@@ -11,6 +11,24 @@
 
 <body class="text_center">
 
+<div class="container-fluid">
+
+    <div class="container">
+        <div class="row">
+            <article class="col-md-1">
+                <slider>
+                    <slide></slide>
+                    <slide></slide>
+                    <slide></slide>
+                    <slide></slide>
+                </slider>
+
+            </article>
+
+
+
+
+            <article class="col-md-12">
 
 <form class="form-signin" method="post" action="formulaire_insert.php">
 
@@ -90,6 +108,10 @@
 
     <input type="submit" id="button_creation" value=" Créer un compte! "/>
 </form>
+                </article>
+        </div>
+    </div>
+</div>
 
 </body>
 
