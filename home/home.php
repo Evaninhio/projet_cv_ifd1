@@ -44,11 +44,14 @@ session_start();
         }
         else
         {
-            echo"<h1 id='welcome'> Bonne matinée sur My Online CV</h1>";
+            echo"<h1 id='welcome'> Bonne matinée sur My Online CV echo </h1>";
         }
 
-        echo $_SESSION["prenom"];
+
+
     ?>
+
+    <p>
 
     <p id="slogan_home">Rédigez un CV n'a jamais été aussi simple! </p>
 
@@ -85,7 +88,9 @@ session_start();
         $data=$req->fetch();
         $nb_formations=$data[0];
 
-        echo "
+
+
+        echo"
         <p><strong>$nb_user</strong>  personnes ont déja franchi le pas !</p>
         <p><strong>$nb_schools</strong>  écoles déja recensées</p>
         <p><strong>$nb_formations</strong>  formations déja enregistrées</p>
