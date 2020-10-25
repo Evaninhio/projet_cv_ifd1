@@ -44,7 +44,7 @@ session_start();
         }
         else
         {
-            echo"<h1 id='welcome'> Bonne matinée sur My Online CV echo </h1>";
+            echo"<h1 id='welcome'> Bonne matinée sur My Online CV </h1>";
         }
 
 
