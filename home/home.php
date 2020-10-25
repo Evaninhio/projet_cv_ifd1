@@ -26,7 +26,7 @@ session_destroy();
             <?php
             if (isset($_GET['creation_compte']))
             {
-                echo "<p>Compte crée avec succès</p>";
+                echo "<p>Compte créé avec succès</p>";
             }
             else{
                 echo" <a href=\"../connexion_inscription/inscription.php\">Inscription</a>";
@@ -44,7 +44,7 @@ session_destroy();
         }
         else{
             echo "
-            Connecté<img src=\"affichage_image.php\" alt=\"photo_profil\">";
+            Connecté<img src=\"affichage_image.php\">";
 
         }
 
