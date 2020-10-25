@@ -38,6 +38,12 @@
     <ul>
         <li>
             <label>
+                Nom : <input type="text" name="nom" required/>
+            </label>
+            <br>
+        </li>
+        <li>
+            <label>
                 Prénom : <input type="text" name="prenom" required/>
             </label>
             <br>

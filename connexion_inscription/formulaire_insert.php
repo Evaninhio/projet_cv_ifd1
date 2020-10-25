@@ -1,4 +1,6 @@
 <?php
+
+
 $nom=strtoupper($_POST["nom"]);
 $prenom=strtoupper($_POST["prenom"]);
 $email=$_POST["email"];
@@ -27,6 +29,14 @@ else
     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
     $req=$bdd->prepare("INSERT INTO utilisateur VALUES ('$email','$nom','$prenom','$adresse_actuelle','$ville_de_residence','$lien_linkedin','$date_naissance',PASSWORD('$password'),'$biographie','$num_telephone','$photo_profil');");
     $req->execute();
+
+    session_start();
+    $_SESSION["prenom"]=$data["prenom"];
+    $_SESSION["nom"]=$data["nom"];
+    $_SESSION["photo_profil"]=$data["photo_profil"];
+    header("Location: ../home/home.php?creation_compte");
+
+
 }
 
 ?>

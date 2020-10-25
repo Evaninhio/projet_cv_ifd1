@@ -22,7 +22,18 @@ session_destroy();
     <ul id="menu">
         <li><a href="#second_section">Qui sommes-nous ?</a></li>
         <li><a href="#">Essayer maintenant! </a></li>
-        <li><a href="../connexion_inscription/inscription.php">Inscription</a></li>
+        <li>
+            <?php
+            if (isset($_GET['creation_compte']))
+            {
+                echo "<p>Compte crée avec succès</p>";
+            }
+            else{
+                echo" <a href=\"../connexion_inscription/inscription.php\">Inscription</a>";
+            }
+            ?>
+
+        </li>
         <li>
         <?php
         if(isset($_SESSION["prenom"])==FALSE)
@@ -33,8 +44,8 @@ session_destroy();
         }
         else{
             echo "
-            Connecté "
-            ;
+            Connecté<img src=\"home/affichage_image.php\" alt=\"photo_profil\">";
+
         }
 
         ?>
@@ -46,6 +57,8 @@ session_destroy();
 </div>
 
 <section class="first_section">
+
+
 
     <?php
     $now=date( "H");
@@ -65,6 +78,7 @@ session_destroy();
         {
             echo"<h1 id='welcome'> Bonne matinée sur My Online CV </h1>";
         }
+
 
     ?>
 

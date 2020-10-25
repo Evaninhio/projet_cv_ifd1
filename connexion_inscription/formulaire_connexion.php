@@ -1,5 +1,6 @@
 <?php
 
+
 $email=$_POST["email"];
 $password=$_POST["password"];
 
@@ -20,9 +21,13 @@ else{
     $req->execute([$email]);
     $data=$req->fetch();
     session_start();
+
     $_SESSION["prenom"]=$data["prenom"];
     $_SESSION["nom"]=$data["nom"];
     $_SESSION["photo_profil"]=$data["photo_profil"];
+//    header("Location: ../home/affichage_image.php");
+
+
 
 
        header("Location: ../home/home.php");
