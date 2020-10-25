@@ -44,7 +44,7 @@ session_destroy();
         }
         else{
             echo "
-            Connecté<img src=\"home/affichage_image.php\" alt=\"photo_profil\">";
+            Connecté<img src=\"affichage_image.php\" alt=\"photo_profil\">";
 
         }
 
