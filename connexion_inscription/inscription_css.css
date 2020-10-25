@@ -157,3 +157,7 @@ slide:nth-child(4){
     }
 
 }
+.error{
+    color: red;
+    text-align: center;
+}

@@ -25,6 +25,15 @@
 
     <h1 class="mb-3" id="title">Inscrivez vous dès aujourd'hui</h1>
 
+    <div class="error">
+        <?php
+        if (isset($_GET['error']))
+        { echo "<p>Adresse email déja utilisée</p>";
+        }
+        ?>
+    </div>
+
+
     <!--formulaire inscription nouvel utilisateur-->
     <ul>
         <li>
@@ -91,7 +100,7 @@
 
         <li>
             <label>
-                Photo de profil: <input type="file" name="photo_profil" accept="image/jpeg, image/png">
+                Photo de profil: <input type="file" name="photo_profil" accept="image/png">
             </label>
         </li>
     </ul>

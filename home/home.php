@@ -1,6 +1,6 @@
-
 <?php
 session_start();
+session_destroy();
 ?>
 
 
@@ -23,7 +23,23 @@ session_start();
         <li><a href="#second_section">Qui sommes-nous ?</a></li>
         <li><a href="#">Essayer maintenant! </a></li>
         <li><a href="../connexion_inscription/inscription.php">Inscription</a></li>
-        <li><a href="../connexion_inscription/connexion.php">Connexion<img src="../images/kisspng-india-login-computer-icons-emoticon-medicine-user-login-icon-5ab05c8bc2f8d1.4479395815215074677986.jpg" alt="photo profil"></a></li>
+        <li>
+        <?php
+        if(isset($_SESSION["prenom"])==FALSE)
+        {
+            echo "
+            <a href= \" ../connexion_inscription/connexion.php\">Connexion<img src=\"../images/kisspng-india-login-computer-icons-emoticon-medicine-user-login-icon-5ab05c8bc2f8d1.4479395815215074677986.jpg\" alt=\"photo profil\"></a>
+            ";
+        }
+        else{
+            echo "
+            Connecté "
+            ;
+        }
+
+        ?>
+
+        </li>
 
     </ul>
 
@@ -34,11 +50,14 @@ session_start();
     <?php
     $now=date( "H");
 
+
+
         if($now>12 && $now<20)
         {
-           echo"<h1 id='welcome'> Bonne après midi sur My Online CV</h1>";
+           echo"<h1 id='welcome'> Bon après-midi sur My Online CV  </h1>";
+
         }
-        else if ($now>20 )
+        else if ($now>20)
         {
             echo"<h1 id='welcome'> Bonne soirée sur My Online CV</h1>";
         }
@@ -46,8 +65,6 @@ session_start();
         {
             echo"<h1 id='welcome'> Bonne matinée sur My Online CV </h1>";
         }
-
-
 
     ?>
 
@@ -88,8 +105,6 @@ session_start();
         $data=$req->fetch();
         $nb_formations=$data[0];
 
-
-
         echo"
         <p><strong>$nb_user</strong>  personnes ont déja franchi le pas !</p>
         <p><strong>$nb_schools</strong>  écoles déja recensées</p>
@@ -98,10 +113,7 @@ session_start();
         ?>
     </div>
 
-
-
 </section>
-
 
 <section id="second_section">
     <p>Qui sommes nous ?</p>

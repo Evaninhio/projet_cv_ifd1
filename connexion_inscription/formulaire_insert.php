@@ -1,5 +1,4 @@
 <?php
-
 $nom=strtoupper($_POST["nom"]);
 $prenom=strtoupper($_POST["prenom"]);
 $email=$_POST["email"];
@@ -19,7 +18,7 @@ $data=$req_test->fetch();
 
 if($data[0]!=0)
 {
-    header("Location: inscription.php");
+    header("Location: inscription.php?error=1");
     exit();
 }
 else

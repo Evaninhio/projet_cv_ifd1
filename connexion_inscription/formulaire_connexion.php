@@ -1,6 +1,5 @@
 <?php
 
-
 $email=$_POST["email"];
 $password=$_POST["password"];
 
@@ -9,7 +8,7 @@ $req_test=$bdd->prepare("SELECT COUNT(*) from utilisateur where email=? AND pass
 $req_test->execute([$email,$password]);
 $data=$req_test->fetch();
 
-if($data[0]==0)
+if($data['COUNT(*)']==0)
 {
     header("Location: connexion.php?error=1");
     exit();
@@ -17,13 +16,16 @@ if($data[0]==0)
 else{
 
     $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-    $req=$bdd->prepare("SELECT prenom,nom from utilisateur where email='$email';");
+    $req=$bdd->prepare("SELECT prenom,nom,photo_profil from utilisateur where email=?;");
+    $req->execute([$email]);
     $data=$req->fetch();
     session_start();
-    $_SESSION['prenom']=$data[0];
-    $_SESSION["nom"]=$data[1];
-    header("Location: ../home/home.php");
-}
+    $_SESSION["prenom"]=$data["prenom"];
+    $_SESSION["nom"]=$data["nom"];
+    $_SESSION["photo_profil"]=$data["photo_profil"];
 
+
+       header("Location: ../home/home.php");
+}
 
 ?>
