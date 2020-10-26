@@ -106,7 +106,7 @@
 
         <li>
             <label>
-                Photo de profil: <input type="file" name="photo_profil" accept="image/png">
+                Photo de profil: <input type="file" name="photo_profil" accept="image/png" required>
             </label>
         </li>
     </ul>
