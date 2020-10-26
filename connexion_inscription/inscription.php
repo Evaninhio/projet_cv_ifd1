@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>My Online CV- Le job de vos rêves est à portée de main ! </title>
+    <title>My Online CV- INSCRIPTION </title>
     <link rel="stylesheet" href="inscription_css.css">
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
     </head>

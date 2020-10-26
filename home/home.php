@@ -43,8 +43,9 @@ session_destroy();
             ";
         }
         else{
-            echo "
-            Connecté<img src=\"affichage_image.php\">";
+            echo 'Connecté<img src="data:image/png;base64,'.base64_encode( $_SESSION['photo_profil'] ).'"/>';
+
+
 
         }
 
