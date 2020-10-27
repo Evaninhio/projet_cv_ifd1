@@ -208,42 +208,6 @@ session_start();
         </form>
     </div>
 
-
-
-
-
-
-<!--        <div class="formation">-->
-<!---->
-<!--            <img src="../images/1200px-Utbm.svg.png" class="floating_image" alt="logo_ecole">-->
-<!---->
-<!--            <div class="name">-->
-<!--                <b>UNIVERSITE DE TECHNOLOGIE DE BELFORT-MONTBELIARD</b>-->
-<!---->
-<!--            </div>-->
-<!---->
-<!--            <div class="type_diplome">-->
-<!--                Diplome d'ingénieur-->
-<!--            </div>-->
-<!---->
-<!--            <div class="date_debut_fin">-->
-<!--                2019/PRESENT-->
-<!--            </div>-->
-<!--            <div class="description">-->
-<!--               ETUDE D'INGENIEUR-->
-<!--            </div>-->
-<!--        </div>-->
-
-
-
-
-
-
-
-
-
-
-
         <?php
 
         $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
@@ -262,6 +226,13 @@ session_start();
             $date_de_fin=$data[3];
             $nom_type_diplome=$data[4];
             $nom_ecole=$data[5];
+
+
+            $date = new DateTime($date_de_debut);
+           $date_de_debut=$date->format('Y');
+            $date = new DateTime($date_de_fin);
+            $date_de_fin=$date->format('Y');
+
 
 
             echo"
@@ -288,36 +259,13 @@ session_start();
             ";
 
             $data=$req->fetch();
-
-
-
-
-
         }
-
-
         ?>
-
-
-
-
 
     </div>
 
-
-
-
-
-
-
-
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-
-
-
-
 
 </body>
 </html>
