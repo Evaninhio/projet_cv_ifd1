@@ -116,3 +116,7 @@ label #sidebar_button:hover{
     margin-top: 5px;
     width: 45%;
 }
+
+#check:checked~.content{
+    left:-220px;
+}
