@@ -145,7 +145,7 @@ label #search_button:hover{
     color: green;
 }
 
-.ajouter_formation
+.ajouter_formation,.formation
 {
    margin-left: auto;
     margin-right: auto;

@@ -179,7 +179,7 @@ session_start();
 
                     ?>
                 </select>
-                </BR>
+
             </div>
 
             <div class="form-group">
@@ -208,6 +208,19 @@ session_start();
         </form>
     </div>
 
+        <div class="formation">
+
+        </div>
+
+
+
+
+
+
+
+
+
+
 
         <?php
 
@@ -221,8 +234,12 @@ session_start();
         while($data)
         {
 
-        }
 
+
+
+
+
+        }
 
 
         ?>
