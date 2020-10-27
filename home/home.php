@@ -21,7 +21,7 @@ session_destroy();
 
     <ul id="menu">
         <li><a href="#second_section">Qui sommes-nous ?</a></li>
-        <li><a href="#">Essayer maintenant! </a></li>
+        <li><a href="../generator_cv/resume_cv.php">Essayer maintenant! </a></li>
         <li>
             <?php
             if (isset($_GET['creation_compte']))
