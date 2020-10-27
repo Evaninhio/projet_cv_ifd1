@@ -208,9 +208,31 @@ session_start();
         </form>
     </div>
 
-        <div class="formation">
 
-        </div>
+
+
+
+
+<!--        <div class="formation">-->
+<!---->
+<!--            <img src="../images/1200px-Utbm.svg.png" class="floating_image" alt="logo_ecole">-->
+<!---->
+<!--            <div class="name">-->
+<!--                <b>UNIVERSITE DE TECHNOLOGIE DE BELFORT-MONTBELIARD</b>-->
+<!---->
+<!--            </div>-->
+<!---->
+<!--            <div class="type_diplome">-->
+<!--                Diplome d'ingénieur-->
+<!--            </div>-->
+<!---->
+<!--            <div class="date_debut_fin">-->
+<!--                2019/PRESENT-->
+<!--            </div>-->
+<!--            <div class="description">-->
+<!--               ETUDE D'INGENIEUR-->
+<!--            </div>-->
+<!--        </div>-->
 
 
 
@@ -225,7 +247,7 @@ session_start();
         <?php
 
         $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-        $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ;");
+        $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ORDER BY date_de_debut DESC;");
         $req->execute([$_SESSION["email"]]);
         $data=$req->fetch();
 
@@ -234,6 +256,38 @@ session_start();
         while($data)
         {
 
+            $intitule_diplome=$data[0];
+            $description_formation=$data[1];
+            $date_de_debut=$data[2];
+            $date_de_fin=$data[3];
+            $nom_type_diplome=$data[4];
+            $nom_ecole=$data[5];
+
+
+            echo"
+            <div class=\"formation\">
+            <img class='floating_image' src=\"../images/pngtree-graduated-students-png-image_2872038.jpg\">
+
+            <div class=\"name\">
+                <b>$nom_ecole</b>
+
+            </div>
+
+            <div class=\"type_diplome\">
+                $nom_type_diplome/$intitule_diplome
+            </div>
+
+            <div class=\"date_debut_fin\">
+                $date_de_debut-$date_de_fin
+            </div>
+            <div class=\"description\">
+               $description_formation
+            </div>
+        </div>
+           
+            ";
+
+            $data=$req->fetch();
 
 
 

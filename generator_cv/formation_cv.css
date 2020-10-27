@@ -2,6 +2,8 @@
 body{
     margin:0;
     padding:0;
+    height: 100%;
+    width: 100%;
     background-image: url("../images/pexels-photo-2457284.jpeg");
 }
 
@@ -108,7 +110,7 @@ label #sidebar_button:hover{
     width: 100%;
     margin-top: 70px;
     margin-left: 280px;
-    height: 100vh;
+    overflow: auto;
 }
 
 .ajouter_formation {
@@ -149,9 +151,40 @@ label #search_button:hover{
 {
    margin-left: auto;
     margin-right: auto;
+    margin-top: 15px;
     padding: 20px;
     background-color: white;
     opacity: 90%;
     border-radius: 15px;
+}
+
+.formation{
+    margin-top: 50px;
+    width: 700px;
+}
+
+.floating_image{
+    width: 45px;
+    float: left;
+}
+
+.name{
+    font-size: 1em;
+    color: darkblue;
+    text-align: right;
+}
+
+.type_diplome{
+    color: #0056b3;
+    text-align: right;
+}
+
+.date_debut_fin{
+    color: #0056b3;
+    text-align: right;
+}
+
+.description{
+    text-align: center;
 }
 
