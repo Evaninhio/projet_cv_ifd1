@@ -21,7 +21,31 @@ session_destroy();
 
     <ul id="menu">
         <li><a href="#second_section">Qui sommes-nous ?</a></li>
-        <li><a href="../generator_cv/resume_cv.php">Essayer maintenant! </a></li>
+
+
+
+        <li>
+            <?php
+            if (isset($_GET['connected']))
+            {
+                echo" <a href=\"../generator_cv/resume_cv.php\">Essayez dès maintenant</a>";
+            }
+            else if(isset($_GET['connection-error']))
+            {
+                echo "<a href=\"home.php?connection-error\">Vous devez etre connecté</a>";
+            }
+            else {
+            echo "<a href=\"home.php?connection-error\">Essayez dès maintenant</a>";
+            }
+
+            ?>
+        </li>
+
+
+
+
+
+
         <li>
             <?php
             if (isset($_GET['creation_compte']))
@@ -43,8 +67,8 @@ session_destroy();
             ";
         }
         else{
-            echo 'Connecté<img src="data:image/png;base64,'.base64_encode( $_SESSION['photo_profil'] ).'"/>';
 
+            echo 'Connecté<img src="data:image/png;base64,'.base64_encode( $_SESSION['photo_profil'] ).'"/>';
 
 
         }

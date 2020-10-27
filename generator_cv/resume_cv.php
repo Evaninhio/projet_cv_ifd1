@@ -10,48 +10,60 @@ session_destroy();
     <meta charset="utf-8">
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="resume_cv.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>My Online CV - Relisez votre CV</title>
 </head>
 
 
 <body>
 
+    <input type="checkbox" id="check">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navigation_bar">
-    <a class="navbar-brand" href="#">
-        <img src="../images/téléchargement.png" class="logo"> Résumé de votre CV
-    </a>
+    <header>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <label for="check">
+            <i class="fas fa-bars" id="sidebar_button"></i>
+        </label>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    Formations <span class="sr-only"></span>
-                </a>
-            </li>
+        <div class="left_area">
+            <h1> Créer mon CV </h1>
+        </div>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Expériences profesionnelles <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Autres</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Compétences</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Langues</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Qualifications</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Expériences de bénévolat</a>
-                </div>
-            </li>
-        </ul>
+    </header>
+
+    <div class="side_bar">
+
+        <center>
+            <img src="../images/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png" class="profile_photo">
+            <h2>Prenom</h2>
+        </center>
+
+                <a href="#"><i class="fas fa-graduation-cap"></i><span>Formations</span></a>
+
+                <a href="#"><i class="fas fa-briefcase"></i><span>Expériences professionelles</span></a>
+
+                <a href="#"><i class="fas fa-hands-helping"></i><span>Expériences de bénévolat</span></a>
+
+                <a href="#"><i class="fas fa-check"></i><span>Compétences</span></a>
+
+                <a href="#"><i class="fas fa-language"></i><span>Langues</span></a>
+
+                <a href="#"><i class="fas fa-heart"></i><span>Passions</span></a>
+
     </div>
-</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
