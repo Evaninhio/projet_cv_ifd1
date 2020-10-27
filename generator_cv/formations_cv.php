@@ -72,6 +72,15 @@ session_start();
 
     <div class="ajouter_formation">
 
+        <div class="afficher/masquer">
+            <input type="checkbox" id="check3">
+            Créer une nouvelle formation
+            <label for="check3">
+                <i class="fas fa-bars" id="afficher_masquer_button"></i>
+            </label>
+
+
+        <div class="contenu_ajouter_formation">
 
         <!-- debut recherche approfondie des écoles-->
 
@@ -206,6 +215,8 @@ session_start();
 
             <button type="submit" class="btn btn-primary">Créer la formation</button>
         </form>
+        </div>
+        </div>
     </div>
 
         <?php

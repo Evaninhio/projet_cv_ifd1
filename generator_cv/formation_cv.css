@@ -107,7 +107,7 @@ label #sidebar_button:hover{
 }
 
 .content{
-    position: fixed;
+    position: absolute;
     width: 100%;
     margin-top: 70px;
     margin-left: 280px;
@@ -187,4 +187,23 @@ label #search_button:hover{
 .description{
     text-align: center;
 }
+
+#ajouter_formation_button{
+    color: #005cbf;
+}
+
+#check3{
+    display:none ;
+}
+
+label #afficher_masquer_button{
+    color: #005cbf;
+}
+.contenu_ajouter_formation{
+    display: none;
+}
+#check3:checked~.contenu_ajouter_formation{
+    display: block;
+}
+
 
