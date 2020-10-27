@@ -24,7 +24,7 @@ session_start();
             <?php
             if (isset($_GET['connected']))
             {
-                echo" <a href=\"../generator_cv/resume_cv.php\">Essayez dès maintenant</a>";
+                echo "<a href='../generator_cv/formations_cv.php'>Essayez dès maintenant</a>";
             }
             else if(isset($_GET['connection-error']))
             {

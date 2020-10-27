@@ -9,7 +9,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="resume_cv.css">
+    <link rel="stylesheet" href="formation_cv.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>My Online CV - Créez votre CV en toute simplicité</title>
 </head>
