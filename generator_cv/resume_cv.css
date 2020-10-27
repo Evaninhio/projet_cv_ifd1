@@ -6,7 +6,7 @@ body{
 
 header{
     position:fixed;
-    background: #b8daff;
+    background: #ffc107;
     padding:20px;
     width:100%;
     height: 70px;
@@ -14,14 +14,14 @@ header{
 }
 
 .left_area h1{
-    color:darkblue;
+    color:white;
     margin:0;
     font-size: 2em;
    position: relative;
-    bottom:0.7em;
+    bottom:0.8em;
 }
 .side_bar{
-    background: #b8daff;
+    background: #ffdf7e;
     margin-top: 70px;
     padding-top: 30px;
     position: fixed;
@@ -48,7 +48,7 @@ label #sidebar_button{
     color: white;
     position: fixed;
     cursor: pointer;
-    left:300px;
+    left:250px;
     font-size: 20px;
     margin: 5px 0 ;
 
@@ -60,7 +60,7 @@ label #sidebar_button:hover{
 
 
 .side_bar a {
-    color: darkblue;
+    color: darkorange;
     display: block;
     width: 100%;
     text-decoration: none;
@@ -71,20 +71,12 @@ label #sidebar_button:hover{
     transition-property: background-color;
 }
 
-.side_bar a {
-    color: darkblue;
-    display: block;
-    width: 100%;
-    text-decoration: none;
-    line-height: 60px;
-    padding-left: 40px;
-    box-sizing: border-box;
-    transition: 0.5s;
-    transition-property: background-color;
+.side_bar span{
+    color: black;
 }
 
 .side_bar a:hover{
-    background: #067ded;
+    background: white;
 }
 
 .side_bar i{
