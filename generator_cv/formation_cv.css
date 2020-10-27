@@ -78,7 +78,7 @@ label #sidebar_button:hover{
 }
 
 .side_bar a:hover{
-    background: darkorange;
+    background: #80bdff;
 }
 
 .side_bar i{
@@ -103,3 +103,16 @@ label #sidebar_button:hover{
     display: none;
 }
 
+.content{
+    position: fixed;
+    width: 100%;
+    margin-top: 70px;
+    margin-left: 280px;
+    height: 100vh;
+}
+
+.ajouter_formation{
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 45%;
+}

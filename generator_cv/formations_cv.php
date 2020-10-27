@@ -67,20 +67,70 @@ session_start();
     </div>
 
 
+    <div class="content">
+
+    <div class="ajouter_formation">
+
+        <form>
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+
+                    <label>Date de début de formation</label>
+                    <input type="date" class="form-control" name="date_de_debut" value="<?php echo $today = date("Y-m-d")?>" max= "<?php echo $today = date("Y-m-d")?>"  required />
+
+                </div>
+
+                <div class="form-group col-md-6">
+
+                    <label>Date de fin de formation</label>
+                    <input type="date" class="form-control" name="date_de_debut" value="<?php echo $today = date("Y-m-d")?>" />
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Intitulé du diplôme </label>
+                <input type="text" class="form-control" name="intitule_diplome" placeholder="ex: Diplôme d'ingénieur en informatique" required>
+
+            </div>
 
 
+            <div class="form-group">
 
+                <label>Description de la formation</label>
+                <TEXTAREA class="form-control" name="description_formation" maxlength="200"></TEXTAREA>
 
+            </div>
 
+            <div class="form-group">
 
+                <label>Nom de l'école</label>
 
+                <select name="id_ecole" class="form-control"  required>
+                    <option value=""> Choisissez une école </option>
 
+                </select>
 
+            </div>
 
+            <div class="form-group">
 
+                <label>Type de diplôme obtenu</label>
 
+                <select name="type_diplome" class="form-control"  required>
+                    <option value=""> Choisissez un type de diplôme </option>
+                </select>
 
+            </div>
 
+            <button type="submit" class="btn btn-primary">Créer la formation</button>
+        </form>
+    </div>
+
+    </div>
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
