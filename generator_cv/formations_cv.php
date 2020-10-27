@@ -3,7 +3,6 @@ session_start();
 ?>
 
 
-
 <!doctype html>
 <html lang="fr">
 <head>
@@ -16,6 +15,8 @@ session_start();
 
 
 <body>
+
+<!--debut menu vertical-->
 
     <input type="checkbox" id="check">
 
@@ -65,11 +66,49 @@ session_start();
                 <a href="#"><i class="fas fa-heart"></i><span>Passions</span></a>
 
     </div>
-
+<!--fin du menu vertical-->
 
     <div class="content">
 
     <div class="ajouter_formation">
+
+
+        <!-- debut recherche approfondie des écoles-->
+
+        <input type="checkbox" id="check2">
+
+        <label for="check2">Recherche appronfondie
+            <i class="fas fa-bars" id="search_button"></i>
+        </label>
+
+
+        <div id="content_search">
+
+            <form method="get" action="formations_cv.php">
+
+                <div class="form-row" >
+
+                    <div class="form-group col-md-6">
+                        <label>Rechercher une école par ville</label>
+                        <input type="text" class="form-control" name="ville" placeholder="ex: Belfort">
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Appliquer les critères</button>
+
+            </form>
+
+
+            <!-- fin recherche approfondie des écoles-->
+        </div>
+
+
+
+
+        <!--formulaire pour ajouter une formation-->
+
 
         <form>
             <div class="form-row">
@@ -111,52 +150,36 @@ session_start();
 
                 <select name="id_ecole" class="form-control"  required>
                     <option value=""> Choisissez une école </option>
+
                     <?php
-                    $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                    $req_test=$bdd->prepare("SELECT nom_ecole from ecole;");
-                    $req_test->execute();
-                    $data=$req_test->fetch();
-                    while($data){
-                        echo" <option value=\"$data[0]\">$data[0]</option> ";
-                        $data=$req_test->fetch();
+
+                    if (isset($_GET["ville"])) {
+                        $ville = strtoupper($_GET["ville"]);
+                        $bdd = new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                        $req_test = $bdd->prepare("SELECT nom_ecole from ecole where ville_ecole=?;");
+                        $req_test->execute([$ville]);
+                        $data = $req_test->fetch();
+                        while ($data) {
+                            echo " <option value=\"$data[0]\">$data[0]</option> ";
+                            $data = $req_test->fetch();
+                        }
                     }
+                    else{
+                        $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                        $req_test=$bdd->prepare("SELECT nom_ecole from ecole;");
+                        $req_test->execute();
+                        $data=$req_test->fetch();
+
+                        while($data){
+                            echo" <option value=\"$data[0]\">$data[0]</option> ";
+                            $data=$req_test->fetch();
+                        }
+
+                    }
+
                     ?>
                 </select>
-
-
-<!--                recherche approfondie des écoles-->
-
-                <input type="checkbox" id="check_search">
-
-                <div class="form-group" id="div_recherche_approfondie">
-
-                    <form>
-
-                        <div class="form-row">
-
-                            <div class="form-group col-md-6">
-                                <label>Rechercher une ville</label>
-                                <input type="text" class="form-control" name="ville" placeholder="ex: Belfort">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <label>Rechercher par niveau d'études(en années)</label>
-                                <input type="number" class="form-control" name="niveau_etude" placeholder="ex: 5">
-                            </div>
-
-                        </div>
-
-
-                        <button type="submit" class="btn btn-primary">Appliquer les critères</button>
-
-                    </form>
-
-
-                </div>
-
-
-
-
+                </BR>
             </div>
 
             <div class="form-group">
@@ -177,12 +200,6 @@ session_start();
                         $data=$req_test->fetch();
                     }
                     ?>
-
-
-
-
-
-
                 </select>
 
             </div>

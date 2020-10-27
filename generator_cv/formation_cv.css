@@ -111,10 +111,17 @@ label #sidebar_button:hover{
     height: 100vh;
 }
 
-.ajouter_formation{
+.ajouter_formation {
     margin-left: 10px;
     margin-top: 5px;
     width: 45%;
+}
+
+#content_search{
+    display: none;
+    background-color: white;
+    opacity: 90%;
+}
 
 
 #check:checked~.content{
@@ -122,6 +129,21 @@ label #sidebar_button:hover{
 }
 
 
+#check2:checked ~ #content_search{
+    display: block;
+}
+
+#check2{
+    display: none;
+}
+
+label #search_button{
+    color: #0056b3;
+}
+
+label #search_button:hover{
+    color: green;
+}
 
 
 
