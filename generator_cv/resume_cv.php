@@ -19,7 +19,7 @@ session_destroy();
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navigation_bar">
     <a class="navbar-brand" href="#">
-        <img src="../images/téléchargement.png" class="logo">      Créez votre CV
+        <img src="../images/téléchargement.png" class="logo"> Résumé de votre CV
     </a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
