@@ -25,7 +25,8 @@ else{
     $_SESSION["prenom"]=$data["prenom"];
     $_SESSION["nom"]=$data["nom"];
     $_SESSION["photo_profil"]=$data["photo_profil"];
-//    header("Location: ../home/affichage_image.php");
+    $_SESSION["email"]=$email;
+
 
 
 

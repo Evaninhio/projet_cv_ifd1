@@ -77,7 +77,7 @@ session_start();
 
         <input type="checkbox" id="check2">
 
-        <label for="check2">Recherche appronfondie
+        <label for="check2">Recherche approfondie
             <i class="fas fa-bars" id="search_button"></i>
         </label>
 
@@ -209,10 +209,36 @@ session_start();
     </div>
 
 
+        <?php
+
+        $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+        $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ;");
+        $req->execute([$_SESSION["email"]]);
+        $data=$req->fetch();
+
+
+
+        while($data)
+        {
+
+        }
+
+
+
+        ?>
+
+
 
 
 
     </div>
+
+
+
+
+
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
