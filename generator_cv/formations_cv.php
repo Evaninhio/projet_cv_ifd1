@@ -123,6 +123,40 @@ session_start();
                     ?>
                 </select>
 
+
+<!--                recherche approfondie des écoles-->
+
+                <input type="checkbox" id="check_search">
+
+                <div class="form-group" id="div_recherche_approfondie">
+
+                    <form>
+
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <label>Rechercher une ville</label>
+                                <input type="text" class="form-control" name="ville" placeholder="ex: Belfort">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label>Rechercher par niveau d'études(en années)</label>
+                                <input type="number" class="form-control" name="niveau_etude" placeholder="ex: 5">
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Appliquer les critères</button>
+
+                    </form>
+
+
+                </div>
+
+
+
+
             </div>
 
             <div class="form-group">
