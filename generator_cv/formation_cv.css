@@ -192,6 +192,11 @@ label #search_button:hover{
     color: #005cbf;
 }
 
+#ajouter_formation_button:hover{
+    color: red;
+}
+
+
 #check3{
     display:none ;
 }
