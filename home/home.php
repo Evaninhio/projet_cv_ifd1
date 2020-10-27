@@ -1,6 +1,5 @@
 <?php
 session_start();
-session_destroy();
 ?>
 
 
@@ -21,9 +20,6 @@ session_destroy();
 
     <ul id="menu">
         <li><a href="#second_section">Qui sommes-nous ?</a></li>
-
-
-
         <li>
             <?php
             if (isset($_GET['connected']))
@@ -40,11 +36,6 @@ session_destroy();
 
             ?>
         </li>
-
-
-
-
-
 
         <li>
             <?php
@@ -67,10 +58,7 @@ session_destroy();
             ";
         }
         else{
-
-            echo 'Connecté<img src="data:image/png;base64,'.base64_encode( $_SESSION['photo_profil'] ).'"/>';
-
-
+            echo 'Connecté <img src="data:image/png;base64,'.base64_encode( $_SESSION['photo_profil'] ).'"/>';
         }
 
         ?>

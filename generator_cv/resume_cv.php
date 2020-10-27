@@ -1,7 +1,7 @@
 <?php
 session_start();
-session_destroy();
 ?>
+
 
 
 <!doctype html>
@@ -34,13 +34,27 @@ session_destroy();
     <div class="side_bar">
 
         <center>
-            <img src="../images/png-transparent-profile-logo-computer-icons-user-user-blue-heroes-logo.png" class="profile_photo">
-            <h2>Prenom</h2>
+            <?php
+                if(isset($_SESSION["prenom"]))
+                {
+                     echo '<img class="profile_photo" src="data:image/png;base64,'.base64_encode( $_SESSION['photo_profil'] ).'"/>';
+                 }
+            ?>
+            <h2>
+
+                <?php
+                if(isset($_SESSION["prenom"]))
+                {
+                    echo $_SESSION["prenom"];
+                }
+                ?>
+
+            </h2>
         </center>
 
                 <a href="#"><i class="fas fa-graduation-cap"></i><span>Formations</span></a>
 
-                <a href="#"><i class="fas fa-briefcase"></i><span>Expériences professionelles</span></a>
+                <a href="#"><i class="fas fa-briefcase"></i><span>Expériences professionnelles</span></a>
 
                 <a href="#"><i class="fas fa-hands-helping"></i><span>Expériences de bénévolat</span></a>
 
@@ -71,6 +85,9 @@ session_destroy();
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+
+
 
 
 </body>
