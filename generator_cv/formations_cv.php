@@ -111,7 +111,16 @@ session_start();
 
                 <select name="id_ecole" class="form-control"  required>
                     <option value=""> Choisissez une école </option>
-
+                    <?php
+                    $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                    $req_test=$bdd->prepare("SELECT nom_ecole from ecole;");
+                    $req_test->execute();
+                    $data=$req_test->fetch();
+                    while($data){
+                        echo" <option value=\"$data[0]\">$data[0]</option> ";
+                        $data=$req_test->fetch();
+                    }
+                    ?>
                 </select>
 
             </div>
@@ -122,6 +131,24 @@ session_start();
 
                 <select name="type_diplome" class="form-control"  required>
                     <option value=""> Choisissez un type de diplôme </option>
+
+                    <?php
+                    $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                    $req_test=$bdd->prepare("SELECT nom_type_diplome from type_diplome;");
+                    $req_test->execute();
+                    $data=$req_test->fetch();
+
+                    while($data){
+                        echo" <option value=\"$data[0]\">$data[0]</option> ";
+                        $data=$req_test->fetch();
+                    }
+                    ?>
+
+
+
+
+
+
                 </select>
 
             </div>
