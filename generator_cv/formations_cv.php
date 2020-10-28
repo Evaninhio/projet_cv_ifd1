@@ -124,7 +124,7 @@ session_start();
         <!--formulaire pour ajouter une formation-->
 
 
-        <form method="post" action="insertion_formation.php">
+        <form method="post" action="database_update/insertion_formation.php">
             <div class="form-row">
 
                 <div class="form-group col-md-6">
@@ -161,6 +161,7 @@ session_start();
             <div class="form-group">
 
                 <label>Nom de l'école</label>
+                 / Vous ne trouvez pas votre école ? Créez la <a href="database_update/insert_ecole.php" target="_blank"> ici </a>
 
                 <select name="id_ecole" class="form-control"  required>
                     <option value=""> Choisissez une école </option>
@@ -245,7 +246,7 @@ session_start();
 
 
             $date = new DateTime($date_de_debut);
-           $date_de_debut=$date->format('Y');
+            $date_de_debut=$date->format('Y');
             $date = new DateTime($date_de_fin);
             $date_de_fin=$date->format('Y');
 
@@ -254,15 +255,12 @@ session_start();
             echo"
             <div class=\"formation\">
             <img class='floating_image' src=\"../images/pngtree-graduated-students-png-image_2872038.jpg\">
-
             <div class=\"name\">
                 <b>$nom_ecole</b>
             </div>
-
             <div class=\"type_diplome\">
                 $nom_type_diplome/$intitule_diplome
             </div>
-
             <div class=\"date_debut_fin\">
                 $date_de_debut-$date_de_fin
             </div>
@@ -278,8 +276,7 @@ session_start();
         ?>
 
 
-
-<!--        suppression des formations ajoutées-->
+<!--        suppression des formations ajoutées    -->
 
         <div class="formation">
 
@@ -293,7 +290,7 @@ session_start();
             <div id="delete_form">
 
                 Renseignez les informations contenant la formation à supprimer
-                <form method="post" action="delete_formation.php">
+                <form method="post" action="database_update/delete_formation.php">
 
                     <div class="form-group">
 
@@ -305,7 +302,10 @@ session_start();
 
                     <div class="form-group">
 
-                        <label>Nom de l'école</label>
+
+                        <label> Nom de l'école </label>
+
+
 
                         <select name="id_ecole" class="form-control"  required>
                             <option value=""> Choisissez une école </option>
@@ -363,28 +363,11 @@ session_start();
 
                     </div>
 
+
                     <button type="submit" class="btn btn-primary">Supprimer cette formation</button>
                 </form>
-
-
-
-
             </div>
-
-
-
-
-
-
-
-
         </div>
-
-
-
-
-
-
     </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
