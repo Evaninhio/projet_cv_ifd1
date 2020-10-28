@@ -119,7 +119,7 @@ session_start();
         <!--formulaire pour ajouter une formation-->
 
 
-        <form>
+        <form method="post" action="insertion_formation.php">
             <div class="form-row">
 
                 <div class="form-group col-md-6">
@@ -132,7 +132,7 @@ session_start();
                 <div class="form-group col-md-6">
 
                     <label>Date de fin de formation</label>
-                    <input type="date" class="form-control" name="date_de_debut" value="<?php echo $today = date("Y-m-d")?>" />
+                    <input type="date" class="form-control" name="date_de_fin" value="<?php echo $today = date("Y-m-d")?>" />
 
                 </div>
 
