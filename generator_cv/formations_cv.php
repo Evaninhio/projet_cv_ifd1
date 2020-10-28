@@ -277,13 +277,17 @@ session_start();
         }
         ?>
 
+
+
+<!--        suppression des formations ajoutées-->
+
         <div class="formation">
 
 
             <input type="checkbox" id="check_delete">
 
             <label for="check_delete">Supprimer une formation
-                <i class="fas fa-bars" id="delete"></i>
+                <i class="fas fa-trash" id="delete"></i>
             </label>
 
             <div id="delete_form">
