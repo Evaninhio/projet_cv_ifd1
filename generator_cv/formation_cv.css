@@ -211,4 +211,16 @@ label #afficher_masquer_button{
     display: block;
 }
 
+#check_delete{
+    display: none;
+}
+
+#delete_form{
+    display: none;
+}
+
+#check_delete:checked~#delete_form{
+    display: block;
+}
+
 

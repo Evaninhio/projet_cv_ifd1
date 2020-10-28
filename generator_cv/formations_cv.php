@@ -65,6 +65,11 @@ session_start();
 
                 <a href="#"><i class="fas fa-heart"></i><span>Passions</span></a>
 
+                 <a href="#"><i class="fas fa-download"></i><span> Générer le CV</span></a>
+
+
+
+
     </div>
 <!--fin du menu vertical-->
 
@@ -252,7 +257,6 @@ session_start();
 
             <div class=\"name\">
                 <b>$nom_ecole</b>
-
             </div>
 
             <div class=\"type_diplome\">
@@ -272,6 +276,110 @@ session_start();
             $data=$req->fetch();
         }
         ?>
+
+        <div class="formation">
+
+
+            <input type="checkbox" id="check_delete">
+
+            <label for="check_delete">Supprimer une formation
+                <i class="fas fa-bars" id="delete"></i>
+            </label>
+
+            <div id="delete_form">
+
+                Renseignez les informations contenant la formation à supprimer
+                <form method="post" action="delete_formation.php">
+
+                    <div class="form-group">
+
+                        <label>Intitulé du diplôme </label>
+                        <input type="text" class="form-control" name="intitule_diplome" placeholder="ex: Diplôme d'ingénieur en informatique" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Nom de l'école</label>
+
+                        <select name="id_ecole" class="form-control"  required>
+                            <option value=""> Choisissez une école </option>
+
+                            <?php
+
+                            if (isset($_GET["ville"])) {
+                                $ville = strtoupper($_GET["ville"]);
+                                $bdd = new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                                $req_test = $bdd->prepare("SELECT nom_ecole from ecole where ville_ecole=?;");
+                                $req_test->execute([$ville]);
+                                $data = $req_test->fetch();
+                                while ($data) {
+                                    echo " <option value=\"$data[0]\">$data[0]</option> ";
+                                    $data = $req_test->fetch();
+                                }
+                            }
+                            else{
+                                $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                                $req_test=$bdd->prepare("SELECT nom_ecole from ecole;");
+                                $req_test->execute();
+                                $data=$req_test->fetch();
+
+                                while($data){
+                                    echo" <option value=\"$data[0]\">$data[0]</option> ";
+                                    $data=$req_test->fetch();
+                                }
+
+                            }
+
+                            ?>
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Type de diplôme obtenu</label>
+
+                        <select name="type_diplome" class="form-control"  required>
+                            <option value=""> Choisissez un type de diplôme </option>
+
+                            <?php
+                            $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                            $req_test=$bdd->prepare("SELECT nom_type_diplome from type_diplome;");
+                            $req_test->execute();
+                            $data=$req_test->fetch();
+
+                            while($data){
+                                echo" <option value=\"$data[0]\">$data[0]</option> ";
+                                $data=$req_test->fetch();
+                            }
+                            ?>
+                        </select>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Supprimer cette formation</button>
+                </form>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
 
     </div>
 
