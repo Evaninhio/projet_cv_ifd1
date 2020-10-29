@@ -65,6 +65,16 @@ session_start();
 
         </li>
 
+        <?php
+        if(isset($_SESSION["prenom"])==TRUE)
+        {
+            echo " <li>
+            <a href=\"../connexion_inscription/log_out.php\" target=\"_blank\">Déconnexion</a>
+        </li>";
+        }
+
+       ?>
+
     </ul>
 
 </div>
