@@ -43,9 +43,13 @@ session_start();
             {
                 echo "<p>Compte créé avec succès</p>";
             }
+            elseif (isset($_SESSION["prenom"]))
+            {
+            }
             else{
                 echo" <a href=\"../connexion_inscription/inscription.php\">Inscription</a>";
             }
+
             ?>
 
         </li>

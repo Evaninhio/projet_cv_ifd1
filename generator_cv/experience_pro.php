@@ -35,6 +35,8 @@ session_start();
             <h1> Créer mon CV </h1>
         </div>
 
+
+
     </header>
 
     <div class="side_bar">
@@ -71,6 +73,9 @@ session_start();
                 <a href="#"><i class="fas fa-heart"></i><span>Passions</span></a>
 
                  <a href="#"><i class="fas fa-download"></i><span> Générer le CV</span></a>
+
+            <a href="../connexion_inscription/log_out.php" target="_blank"><i class="fas fa-sign-out-alt"></i><span> Me déconnecter </span></a>
+
 
 
 
