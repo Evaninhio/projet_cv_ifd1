@@ -58,7 +58,7 @@ session_start();
             </h2>
         </center>
 
-                <a href="#"><i class="fas fa-graduation-cap"></i><span>Formations</span></a>
+                <a href="formations_cv.php"><i class="fas fa-graduation-cap"></i><span>Formations</span></a>
 
                 <a href="#"><i class="fas fa-briefcase"></i><span>Expériences professionnelles</span></a>
 
