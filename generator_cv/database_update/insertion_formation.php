@@ -32,7 +32,7 @@ $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", ""
 $req=$bdd->prepare("INSERT INTO formation (intitule_diplome, description_formation, date_de_debut, date_de_fin, type_diplome, email_utilisateur, id_ecole) VALUES (?, ?, ?, ?, ?, ?, ?);");
 $req->execute([$intitule_diplome,$description_formation,$date_de_debut,$date_de_fin,$type_diplome,$_SESSION["email"],$id_ecole]);
 
-header("Location: formations_cv.php");
+header("Location: ../formations_cv.php");
 
 
 ?>

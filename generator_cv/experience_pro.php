@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 ?>
@@ -12,7 +13,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="formation_cv.css">
+    <link rel="stylesheet" href="experience_pro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>My Online CV - Créez votre CV en toute simplicité</title>
 </head>
@@ -79,17 +80,17 @@ session_start();
 
     <div class="content">
 
-    <div class="ajouter_formation">
+    <div class="ajouter_experience_pro">
 
         <div class="afficher/masquer">
             <input type="checkbox" id="check3">
-            Créer une nouvelle formation
+            Créer une nouvelle expérience professionnelle
             <label for="check3">
                 <i class="fas fa-bars" id="afficher_masquer_button"></i>
             </label>
 
 
-        <div class="contenu_ajouter_formation">
+        <div class="contenu_ajouter_experience_pro">
 
         <!-- debut recherche approfondie des écoles-->
 
@@ -102,13 +103,33 @@ session_start();
 
         <div id="content_search">
 
-            <form method="get" action="formations_cv.php">
+            <form method="get" action="experience_pro.php">
 
                 <div class="form-row" >
 
                     <div class="form-group col-md-6">
-                        <label>Rechercher une école par ville</label>
-                        <input type="text" class="form-control" name="ville" placeholder="ex: Belfort">
+                        <label>Rechercher une entreprise par ville </label>
+                        <input type="text" class="form-control" name="ville" placeholder="ex: Belfort" required>
+
+                    <label>Rechercher une entreprise par secteur d'activité</label>
+
+                    <select name="secteur_activite" class="form-control" required>
+                        <option value=""> Choisissez un secteur d'activité </option>
+
+                        <?php
+                            $bdd = new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                            $req = $bdd->prepare("SELECT nom_secteur_activite from secteur_activite;");
+                            $req->execute();
+                            $data=$req->fetch();
+
+                            while($data){
+                                while ($data) {
+                                    echo " <option value=\"$data[0]\">$data[0]</option> ";
+                                    $data = $req->fetch();
+                                }
+                            }
+                        ?>
+                    </select>
                     </div>
 
                 </div>
@@ -119,29 +140,29 @@ session_start();
             </form>
 
 
-            <!-- fin recherche approfondie des écoles-->
+
         </div>
 
+            <!-- fin recherche approfondie des écoles-->
 
 
+        <!--formulaire pour ajouter une experience_pro-->
 
-        <!--formulaire pour ajouter une formation-->
 
-
-        <form method="post" action="database_update/insertion_formation.php">
+        <form method="post" action="database_update/insertion_experience_pro.php">
             <div class="form-row">
 
                 <div class="form-group col-md-6">
 
-                    <label>Date de début de formation</label>
-                    <input type="date" class="form-control" name="date_de_debut" value="<?php echo $today = date("Y-m-d")?>" max= "<?php echo $today = date("Y-m-d")?>"  required />
+                    <label>Date de début</label>
+                    <input type="date" class="form-control" name="date_debut" value="<?php echo $today = date("Y-m-d")?>" max= "<?php echo $today = date("Y-m-d")?>"  required />
 
                 </div>
 
                 <div class="form-group col-md-6">
 
-                    <label>Date de fin de formation</label>
-                    <input type="date" class="form-control" name="date_de_fin" value="<?php echo $today = date("Y-m-d")?>" />
+                    <label>Date de fin </label>
+                    <input type="date" class="form-control" name="date_fin" value="<?php echo $today = date("Y-m-d")?>" />
 
                 </div>
 
@@ -149,43 +170,43 @@ session_start();
 
             <div class="form-group">
 
-                <label>Intitulé du diplôme </label>
-                <input type="text" class="form-control" name="intitule_diplome" placeholder="ex: Diplôme d'ingénieur en informatique" required>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>Description de la formation</label>
-                <TEXTAREA class="form-control" name="description_formation" maxlength="200"></TEXTAREA>
+                <label>Description du travail</label>
+                <TEXTAREA class="form-control" name="description_experience" maxlength="200"></TEXTAREA>
 
             </div>
 
             <div class="form-group">
 
-                <label>Nom de l'école</label>
-                 / Vous ne trouvez pas votre école ? Créez la <a href="database_update/insert_ecole.php" target="_blank"> ici </a>
+                <label>Poste occupé</label>
+                <input type="text" class="form-control" name="poste_occupe"  placeholder="ex: Manager" required>
 
-                <select name="id_ecole" class="form-control"  required>
-                    <option value=""> Choisissez une école </option>
+            </div>
+
+            <div class="form-group">
+
+                <label>Nom de l'entreprise</label>
+                 / Vous ne trouvez pas votre entreprise ? Créez la <a href="database_update/insert_entreprise.php" target="_blank"> ici </a>
+
+                <select name="nom_entreprise" class="form-control"  required>
+                    <option value=""> Choisissez une entreprise </option>
 
                     <?php
 
-                    if (isset($_GET["ville"])) {
+                    if (isset($_GET["ville"],$_GET["secteur_activite"])) {
                         $ville = strtoupper($_GET["ville"]);
+                        $secteur_activite=$_GET["secteur_activite"];
                         $bdd = new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                        $req_test = $bdd->prepare("SELECT nom_ecole from ecole where ville_ecole=?;");
-                        $req_test->execute([$ville]);
+                        $req_test = $bdd->prepare("SELECT nom_entreprise from entreprise where ville_entreprise=? AND secteur_activite=?;");
+                        $req_test->execute([$ville,$secteur_activite]);
                         $data = $req_test->fetch();
                         while ($data) {
                             echo " <option value=\"$data[0]\">$data[0]</option> ";
                             $data = $req_test->fetch();
                         }
                     }
-                    else{
+                    else {
                         $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                        $req_test=$bdd->prepare("SELECT nom_ecole from ecole;");
+                        $req_test=$bdd->prepare("SELECT nom_entreprise from entreprise;");
                         $req_test->execute();
                         $data=$req_test->fetch();
 
@@ -203,14 +224,14 @@ session_start();
 
             <div class="form-group">
 
-                <label>Type de diplôme obtenu</label>
+                <label>Sélectionnez votre type de contrat</label>
 
-                <select name="type_diplome" class="form-control"  required>
-                    <option value=""> Choisissez un type de diplôme </option>
+                <select name="type_contrat" class="form-control"  required>
+                    <option value=""> Choisissez un type de contrat</option>
 
                     <?php
                     $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                    $req_test=$bdd->prepare("SELECT nom_type_diplome from type_diplome;");
+                    $req_test=$bdd->prepare("SELECT nom_type_contrat from type_contrat_travail;");
                     $req_test->execute();
                     $data=$req_test->fetch();
 
@@ -223,16 +244,20 @@ session_start();
 
             </div>
 
-            <button type="submit" class="btn btn-primary">Créer la formation</button>
+            <button type="submit" class="btn btn-primary">Créer l'expérience professionelle </button>
         </form>
         </div>
         </div>
     </div>
 
+
+<!--        generation automatique des expériences déja inscrites-->
+
         <?php
 
         $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-        $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ORDER BY date_de_debut DESC;");
+        $req=$bdd->prepare("SELECT poste_occupe,experiences_professionnelles.description,date_debut,date_fin,type_contrat,nom_entreprise from experiences_professionnelles INNER JOIN type_contrat_travail on experiences_professionnelles.type_contrat=type_contrat_travail.nom_type_contrat INNER JOIN entreprise on entreprise.id_entreprise=experiences_professionnelles.id_entreprise where email_utilisateur=? ORDER BY date_debut DESC
+");
         $req->execute([$_SESSION["email"]]);
         $data=$req->fetch();
 
@@ -241,35 +266,33 @@ session_start();
         while($data)
         {
 
-            $intitule_diplome=$data[0];
-            $description_formation=$data[1];
-            $date_de_debut=$data[2];
-            $date_de_fin=$data[3];
-            $nom_type_diplome=$data[4];
-            $nom_ecole=$data[5];
+            $poste_occupe=$data[0];
+            $description=$data[1];
+            $date_debut=$data[2];
+            $date_fin=$data[3];
+            $type_contrat=$data[4];
+            $nom_entreprise=$data[5];
 
 
-            $date = new DateTime($date_de_debut);
-            $date_de_debut=$date->format('Y');
-            $date = new DateTime($date_de_fin);
-            $date_de_fin=$date->format('Y');
-
-
+            $date = new DateTime($date_debut);
+            $date_debut=$date->format('Y');
+            $date = new DateTime($date_fin);
+            $date_fin=$date->format('Y');
 
             echo"
-            <div class=\"formation\">
-            <img class='floating_image' src=\"../images/pngtree-graduated-students-png-image_2872038.jpg\">
+            <div class=\"experience_pro\">
+            <i class=\"fas fa-briefcase\" id='floating_image'></i>
             <div class=\"name\">
-                <b>$nom_ecole</b>
+                <b>$nom_entreprise</b>
             </div>
-            <div class=\"type_diplome\">
-                $nom_type_diplome/$intitule_diplome
+            <div class=\"type_contrat\">
+                $poste_occupe/$type_contrat
             </div>
             <div class=\"date_debut_fin\">
-                $date_de_debut-$date_de_fin
+                $date_debut-$date_fin
             </div>
             <div class=\"description\">
-               $description_formation
+               $description
             </div>
         </div>
            
@@ -282,24 +305,24 @@ session_start();
 
 <!--        suppression des formations ajoutées    -->
 
-        <div class="formation">
+        <div class="experience_pro">
 
 
             <input type="checkbox" id="check_delete">
 
-            <label for="check_delete">Supprimer une formation
+            <label for="check_delete">Supprimer une expérience professionelle
                 <i class="fas fa-trash" id="delete"></i>
             </label>
 
             <div id="delete_form">
 
-                Renseignez les informations contenant la formation à supprimer
-                <form method="post" action="database_update/delete_formation.php">
+                Renseignez les informations contenant l'expérience à supprimer:
+                <form method="post" action="database_update/delete_experience.php">
 
                     <div class="form-group">
 
-                        <label>Intitulé du diplôme </label>
-                        <input type="text" class="form-control" name="intitule_diplome" placeholder="ex: Diplôme d'ingénieur en informatique" required>
+                        <label>Poste occupé</label>
+                        <input type="text" class="form-control" name="poste_occupe" placeholder="ex: Manager" required>
 
                     </div>
 
@@ -307,19 +330,18 @@ session_start();
                     <div class="form-group">
 
 
-                        <label> Nom de l'école </label>
+                        <label> Nom de l'entreprise</label>
 
 
 
-                        <select name="id_ecole" class="form-control"  required>
-                            <option value=""> Choisissez une école </option>
+                        <select name="nom_entreprise" class="form-control"  required>
+                            <option value=""> Choisissez une entreprise </option>
 
                             <?php
 
 
-
                                 $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                                $req_test=$bdd->prepare("SELECT nom_ecole from ecole;");
+                                $req_test=$bdd->prepare("SELECT nom_entreprise from entreprise;");
                                 $req_test->execute();
                                 $data=$req_test->fetch();
 
@@ -329,7 +351,6 @@ session_start();
                                 }
 
 
-
                             ?>
                         </select>
 
@@ -337,14 +358,14 @@ session_start();
 
                     <div class="form-group">
 
-                        <label>Type de diplôme obtenu</label>
+                        <label>Type de contrat</label>
 
-                        <select name="type_diplome" class="form-control"  required>
-                            <option value=""> Choisissez un type de diplôme </option>
+                        <select name="type_contrat" class="form-control"  required>
+                            <option value=""> Choisissez un type de contrat</option>
 
                             <?php
                             $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                            $req_test=$bdd->prepare("SELECT nom_type_diplome from type_diplome;");
+                            $req_test=$bdd->prepare("SELECT nom_type_contrat from type_contrat_travail;");
                             $req_test->execute();
                             $data=$req_test->fetch();
 
@@ -354,11 +375,10 @@ session_start();
                             }
                             ?>
                         </select>
-
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary">Supprimer cette formation</button>
+                    <button type="submit" class="btn btn-primary">Supprimer cette expérience </button>
                 </form>
             </div>
         </div>
