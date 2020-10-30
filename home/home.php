@@ -94,8 +94,7 @@ session_start();
 
         if($now>12 && $now<20)
         {
-           echo"<h1 id='welcome'> Bon après-midi sur My Online CV  </h1>";
-
+                echo"<h1 id='welcome'> Bon après-midi sur My Online CV  </h1>";
         }
         else if ($now>20)
         {
@@ -154,10 +153,6 @@ session_start();
         ?>
     </div>
 
-</section>
-
-<section id="second_section">
-    <p>Qui sommes nous ?</p>
 </section>
 
 
