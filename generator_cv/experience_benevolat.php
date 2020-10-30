@@ -68,6 +68,8 @@ session_start();
 
     <a href="competences.php"><i class="fas fa-check"></i><span>Compétences</span></a>
 
+    <a href="#"><i class="fas fa-book"></i><span>Qualifications</span></a>
+
     <a href="langues.php"><i class="fas fa-language"></i><span>Langues</span></a>
 
     <a href="passions.php"><i class="fas fa-heart"></i><span>Passions</span></a>
