@@ -137,7 +137,7 @@ session_start();
         $data=$req->fetch();
         $nb_user=$data[0];
         /*we get the number of users*/
-        $req = $bdd-> prepare("SELECT COUNT(*) from liste_ecole;");
+        $req = $bdd-> prepare("SELECT COUNT(*) from ecole;");
         $req->execute();
         $data=$req->fetch();
         $nb_schools=$data[0];

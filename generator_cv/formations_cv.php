@@ -208,9 +208,11 @@ session_start();
             <div class="form-group">
 
                 <label>Type de diplôme obtenu</label>
+                / Vous ne trouvez pas votre école ? Créez la <a href="database_update/insert_type_diplome.php" target="_blank"> ici </a>
 
                 <select name="type_diplome" class="form-control"  required>
                     <option value=""> Choisissez un type de diplôme </option>
+
 
                     <?php
                     $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
