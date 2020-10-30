@@ -1,0 +1,224 @@
+
+body{
+    margin:0;
+    padding:0;
+    height: 100%;
+    width: 100%;
+    background-image: url("../../images/pexels-photo-2457284.jpeg");
+    overflow-y: scroll;
+}
+
+header{
+    position:fixed;
+    background: #2dc46a;
+    padding:20px;
+    width:100%;
+    height: 70px;
+
+}
+
+.left_area h1{
+    color:white;
+    margin:0;
+    font-size: 2em;
+    position: relative;
+    bottom:0.8em;
+}
+
+
+
+
+.side_bar{
+    background: white;
+    margin-top: 70px;
+    padding-top: 30px;
+    position: fixed;
+    left:0;
+    width: 280px;
+    height: 100%;
+    opacity: 90%;
+
+}
+
+.side_bar .profile_photo{
+    width:120px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+}
+
+.side_bar h2{
+    color: goldenrod;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+label #sidebar_button{
+    z-index: 1;
+    color: white;
+    position: fixed;
+    cursor: pointer;
+    left:250px;
+    font-size: 20px;
+    margin: 5px 0 ;
+
+}
+
+label #sidebar_button:hover{
+    color: darkblue;
+}
+
+
+.side_bar a {
+    color:dodgerblue;
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    line-height: 60px;
+    padding-left: 40px;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transition-property: background-color;
+}
+
+.side_bar span{
+    color: black;
+}
+
+.side_bar a:hover{
+    background: #80bdff;
+}
+
+.side_bar i{
+    padding-right:10px ;
+}
+
+
+
+#check:checked ~.side_bar{
+    left: -220px;
+}
+
+#check:checked~.side_bar a span{
+    display: none;
+}
+
+#check:checked~.side_bar a{
+    font-size: 20px;
+    margin-left: 200px;
+    width: 80px;
+}
+
+#check{
+    display: none;
+}
+
+.content{
+    position: absolute;
+    width: 100%;
+    margin-top: 70px;
+    margin-left: 280px;
+}
+
+.ajouter_passions {
+    margin-left: 10px;
+    margin-top: 5px;
+    width: 45%;
+    background-image: url("../../images/loisirs.jpg");
+    background-position: center;
+    color: black;
+
+}
+
+.ajouter_passions label{
+    background: dodgerblue;
+    opacity: 80%;
+    color: white;
+    border-radius: 15px;
+}
+
+#label_check3{
+
+    background: transparent;
+    color: darkblue;
+
+}
+
+.form-group a{
+    color: black;
+}
+
+.passion #floating_image{
+    color: red;
+}
+
+
+#check:checked~.content{
+    left:-220px;
+}
+
+
+.ajouter_passions,.passion
+{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    padding: 20px;
+    background-color: white;
+    opacity: 90%;
+    border-radius: 15px;
+}
+
+.passion{
+    margin-top: 50px;
+    width: 700px;
+}
+
+#floating_image{
+    width: 45px;
+    float: left;
+}
+
+.name{
+    font-size: 1em;
+    color: darkblue;
+    text-align: right;
+}
+
+.nom_type{
+    text-align: right;
+}
+
+.description{
+    text-align: center;
+}
+
+#check3{
+    display:none ;
+}
+
+label #afficher_masquer_button{
+    color: white;
+}
+.contenu_ajouter_passion{
+    display: none;
+}
+#check3:checked~.contenu_ajouter_passion{
+    display: block;
+}
+
+#check_delete{
+    display: none;
+}
+
+#delete_form{
+    display: none;
+}
+
+#check_delete:checked~#delete_form{
+    display: block;
+}
+
+
+#delete:hover{
+    color: red;
+}

@@ -70,7 +70,7 @@ session_start();
 
                 <a href="langues.php"><i class="fas fa-language"></i><span>Langues</span></a>
 
-                <a href="#"><i class="fas fa-heart"></i><span>Passions</span></a>
+                <a href="passions.php"><i class="fas fa-heart"></i><span>Passions</span></a>
 
                  <a href="#"><i class="fas fa-download"></i><span> Générer le CV</span></a>
 

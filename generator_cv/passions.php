@@ -10,7 +10,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="feuilles_de_style/langues.css">
+    <link rel="stylesheet" href="feuilles_de_style/passions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>My Online CV - Créez votre CV en toute simplicité</title>
 </head>
@@ -65,9 +65,9 @@ session_start();
 
     <a href="competences.php"><i class="fas fa-check"></i><span>Compétences</span></a>
 
-    <a href="#"><i class="fas fa-language"></i><span>Langues</span></a>
+    <a href="langues.php"><i class="fas fa-language"></i><span>Langues</span></a>
 
-    <a href="passions.php"><i class="fas fa-heart"></i><span>Passions</span></a>
+    <a href="#"><i class="fas fa-heart"></i><span>Passions</span></a>
 
     <a href="#"><i class="fas fa-download"></i><span> Générer le CV</span></a>
 
@@ -80,38 +80,52 @@ session_start();
 
 <div class="content">
 
-    <div class="ajouter_langue">
+    <div class="ajouter_passions">
 
         <div class="afficher/masquer">
             <input type="checkbox" id="check3">
-            Ajouter une nouvelle langue
-            <label for="check3">
+            Ajouter une nouvelle passion
+            <label for="check3" id="label_check3">
                 <i class="fas fa-bars" id="afficher_masquer_button"></i>
             </label>
 
 
-            <div class="contenu_ajouter_langue">
+            <div class="contenu_ajouter_passion">
 
 
-                <!--formulaire pour ajouter une langue-->
+                <!--formulaire pour ajouter une passion-->
 
 
-                <form method="post" action="database_update/insertion_langue.php">
+                <form method="post" action="database_update/insertion_passion.php">
 
 
 
                     <div class="form-group">
 
-                        <label>Nom de la langue</label>
-                        / Vous ne trouvez pas la langue souhaitée ? Créez la <a href="database_update/insert_langue.php" target="_blank"> ici </a>
+                        <label>Nom de la passion/loisir </label>
+                       <input type="text" class="form-control" name="nom_loisir" placeholder="ex: Tennis" required>
 
-                        <select name="nom_langue" class="form-control"  required>
-                            <option value=""> Choisissez une langue</option>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Description</label>
+
+                    <TEXTAREA class="form-control" name="description_loisir" maxlength="200" placeholder="ex: 5 ans de compétition"></TEXTAREA>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>Sélectionnez le type de votre passion </label>
+
+                        <select name="nom_type" class="form-control"  required>
+                            <option value=""> Choississez un type </option>
 
                             <?php
-
                             $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                            $req_test=$bdd->prepare("SELECT nom_langue from langue;");
+                            $req_test=$bdd->prepare("SELECT nom_type from type_loisir;");
                             $req_test->execute();
                             $data=$req_test->fetch();
 
@@ -124,41 +138,19 @@ session_start();
 
                     </div>
 
-                    <div class="form-group">
-
-                        <label>Sélectionnez votre niveau </label>
-
-                        <select name="niveau_langue" class="form-control"  required>
-                            <option value=""> Choisissez un niveau</option>
-
-                            <?php
-                            $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                            $req_test=$bdd->prepare("SELECT niveau_langue from niveau_langue_etrangere;");
-                            $req_test->execute();
-                            $data=$req_test->fetch();
-
-                            while($data){
-                                echo" <option value=\"$data[0]\">$data[0]</option> ";
-                                $data=$req_test->fetch();
-                            }
-                            ?>
-                        </select>
-
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Je maitrise cette langue !</button>
+                    <button type="submit" class="btn btn-primary"> Créer la passion !</button>
                 </form>
             </div>
         </div>
     </div>
 
 
-    <!--        generation automatique des langues déja maitrisées-->
+    <!--        generation automatique des passions déja inscrites-->
 
     <?php
 
     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-    $req=$bdd->prepare("SELECT nom_langue,niveau_langue from jointure_langue_utilisateur  where email_utilisateur=?;");
+    $req=$bdd->prepare("SELECT nom_loisir,description, nom_type from loisir where email_user=?;");
     $req->execute([$_SESSION["email"]]);
     $data=$req->fetch();
 
@@ -167,20 +159,26 @@ session_start();
     while($data)
     {
 
-        $nom_langue=$data[0];
-        $niveau_langue=$data[1];
+        $nom_loisir=$data[0];
+        $description=$data[1];
+        $nom_type=$data[2];
 
         echo"
-            <div class=\"langue\">
-            <i class=\"fas fa-language\" id=\"floating_image\"></i>
+            <div class=\"passion\">
+            <i class=\"fas fa-heart\" id=\"floating_image\"></i>
             <div class=\"name\">
-                <b>$nom_langue</b>
+                <b>$nom_loisir</b>
             </div>
             
             
-            <div class=\"niveau_langue\">
-               $niveau_langue
+            <div class=\"nom_type\">
+               $nom_type
             </div>
+            
+            
+            <div class=\"description\">
+               $description
+            </div> 
         </div>
            
             ";
@@ -190,51 +188,33 @@ session_start();
     ?>
 
 
-    <!--   suppression des langues ajoutées   -->
+    <!--   suppression des passions ajoutées   -->
 
-    <div class="langue">
+    <div class="passion">
 
 
         <input type="checkbox" id="check_delete">
 
-        <label for="check_delete">Supprimer une langue
+        <label for="check_delete">Supprimer une passion
             <i class="fas fa-trash" id="delete"></i>
         </label>
 
         <div id="delete_form">
 
-            Renseignez les informations contenant la langue à supprimer:
-            <form method="post" action="database_update/delete_langue.php">
+            Renseignez les informations contenant la passion à supprimer:
+            <form method="post" action="database_update/delete_passion.php">
 
                 <div class="form-group">
-
-
-                    <label> Nom de la compétence</label>
-
-
-
-                    <select name="nom_langue" class="form-control"  required>
-                        <option value=""> Choisissez une langue </option>
-
-                        <?php
-
-                        $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                        $req_test=$bdd->prepare("SELECT nom_langue from langue;");
-                        $req_test->execute();
-                        $data=$req_test->fetch();
-
-                        while($data){
-                            echo" <option value=\"$data[0]\">$data[0]</option> ";
-                            $data=$req_test->fetch();
-                        }
-
-
-                        ?>
-                    </select>
-
+                    <label> Nom de la passion</label>
+                    <input type="text" class="form-control" name="nom_loisir" placeholder="ex: Tennis" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Supprimer cette langue </button>
+                <div class="form-group">
+                    <label> Description</label>
+                    <TEXTAREA class="form-control" name="description_loisir" maxlength="200" placeholder="ex: 5 ans de compétition"></TEXTAREA>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Supprimer cette passion </button>
             </form>
         </div>
     </div>
