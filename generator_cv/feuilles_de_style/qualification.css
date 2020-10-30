@@ -117,7 +117,7 @@ label #sidebar_button:hover{
     margin-left: 280px;
 }
 
-.ajouter_experience_pro {
+.ajouter_qualification {
     margin-left: 10px;
     margin-top: 5px;
     width: 45%;
@@ -125,37 +125,16 @@ label #sidebar_button:hover{
     background-position: center;
 }
 
-#content_search{
-    display: none;
-    background-color:transparent;
-    opacity: 90%;
-}
-
 
 #check:checked~.content{
     left:-220px;
-}
-
-
-#check2:checked ~ #content_search{
-    display: block;
 }
 
 #check2{
     display: none;
 }
 
-label #search_button{
-    color: #0056b3;
-}
-
-label #search_button:hover{
-    color: green;
-}
-
-
-
-.ajouter_experience_pro,.experience_pro
+.ajouter_qualification,.qualification
 {
     margin-left: auto;
     margin-right: auto;
@@ -166,7 +145,28 @@ label #search_button:hover{
     border-radius: 15px;
 }
 
-.experience_pro{
+#content_search{
+    display: none;
+    background-color:transparent;
+    opacity: 90%;
+}
+#check2{
+    display: none;
+}
+#check2:checked ~ #content_search{
+    display: block;
+}
+label #search_button{
+     color: #0056b3;
+ }
+
+label #search_button:hover{
+    color: green;
+}
+
+
+
+.qualification{
     margin-top: 50px;
     width: 700px;
 }
@@ -200,4 +200,31 @@ label #search_button:hover{
 
 #check3{
     display:none ;
+}
+
+label #afficher_masquer_button{
+    color: #005cbf;
+}
+.contenu_ajouter_qualification{
+    display: none;
+}
+#check3:checked~.contenu_ajouter_qualification{
+    display: block;
+}
+
+#check_delete{
+    display: none;
+}
+
+#delete_form{
+    display: none;
+}
+
+#check_delete:checked~#delete_form{
+    display: block;
+}
+
+
+#delete:hover{
+    color: red;
 }

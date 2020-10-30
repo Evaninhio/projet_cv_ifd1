@@ -13,7 +13,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="feuilles_de_style/experience_pro.css">
+    <link rel="stylesheet" href="feuilles_de_style/qualification.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>My Online CV - Créez votre CV en toute simplicité</title>
 </head>
@@ -87,17 +87,17 @@ session_start();
 
 <div class="content">
 
-    <div class="ajouter_experience_pro">
+    <div class="ajouter_qualification">
 
         <div class="afficher/masquer">
             <input type="checkbox" id="check3">
-            Créer une nouvelle expérience professionnelle
+            Créer une nouvelle qualification
             <label for="check3">
                 <i class="fas fa-bars" id="afficher_masquer_button"></i>
             </label>
 
 
-            <div class="contenu_ajouter_experience_pro">
+            <div class="contenu_ajouter_qualification">
 
                 <!-- debut recherche approfondie des écoles-->
 
@@ -110,33 +110,14 @@ session_start();
 
                 <div id="content_search">
 
-                    <form method="get" action="experience_pro.php">
+                    <form method="get" action="qualification.php">
 
                         <div class="form-row" >
 
                             <div class="form-group col-md-6">
-                                <label>Rechercher une entreprise par ville </label>
-                                <input type="text" class="form-control" name="ville" placeholder="ex: Belfort" required>
+                                <label>Rechercher une qualification par l'organisme de délivrance </label>
+                                <input type="text" class="form-control" name="organisme_delivrance" placeholder="ex: PROTECTION CIVILE" required>
 
-                                <label>Rechercher une entreprise par secteur d'activité</label>
-
-                                <select name="secteur_activite" class="form-control" required>
-                                    <option value=""> Choisissez un secteur d'activité </option>
-
-                                    <?php
-                                    $bdd = new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                                    $req = $bdd->prepare("SELECT nom_secteur_activite from secteur_activite;");
-                                    $req->execute();
-                                    $data=$req->fetch();
-
-                                    while($data){
-                                        while ($data) {
-                                            echo " <option value=\"$data[0]\">$data[0]</option> ";
-                                            $data = $req->fetch();
-                                        }
-                                    }
-                                    ?>
-                                </select>
                             </div>
 
                         </div>
@@ -150,120 +131,86 @@ session_start();
 
                 </div>
 
-                <!-- fin recherche approfondie des écoles-->
-
-
-                <!--formulaire pour ajouter une experience_pro-->
-
-
-                <form method="post" action="database_update/insertion_experience_pro.php">
+                <form method="post" action="database_update/insertion_qualification.php">
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
 
-                            <label>Date de début</label>
-                            <input type="date" class="form-control" name="date_debut" value="<?php echo $today = date("Y-m-d")?>" max= "<?php echo $today = date("Y-m-d")?>"  required />
+                            <label>Date d'obtention</label>
+                            <input type="date" class="form-control" name="date_obtention" value="<?php echo $today = date("Y-m-d")?>" max= "<?php echo $today = date("Y-m-d")?>"  required />
 
                         </div>
 
                         <div class="form-group col-md-6">
 
-                            <label>Date de fin </label>
-                            <input type="date" class="form-control" name="date_fin" value="<?php echo $today = date("Y-m-d")?>" />
+                            <label>Date d'expiration </label>
+                            <input type="date" class="form-control" name="date_expiration" value="<?php echo $today = date("Y-m-d")?>" min="<?php echo $today = date("Y-m-d")?>"/>
 
                         </div>
 
                     </div>
 
-                    <div class="form-group">
 
-                        <label>Description du travail</label>
-                        <TEXTAREA class="form-control" name="description_experience" maxlength="200"></TEXTAREA>
-
-                    </div>
 
                     <div class="form-group">
 
-                        <label>Poste occupé</label>
-                        <input type="text" class="form-control" name="poste_occupe"  placeholder="ex: Manager" required>
+                        <label>Nom de la qualification</label>
+                        / Vous ne trouvez pas votre qualification ? Créez la <a href="database_update/insert_qualification.php" target="_blank"> ici </a>
 
-                    </div>
-
-                    <div class="form-group">
-
-                        <label>Nom de l'entreprise</label>
-                        / Vous ne trouvez pas votre entreprise ? Créez la <a href="database_update/insert_entreprise.php" target="_blank"> ici </a>
-
-                        <select name="nom_entreprise" class="form-control"  required>
-                            <option value=""> Choisissez une entreprise </option>
+                        <select name="nom_qualification" class="form-control"  required>
+                            <option value=""> Choisissez une qualification </option>
 
                             <?php
 
-                            if (isset($_GET["ville"],$_GET["secteur_activite"])) {
-                                $ville = strtoupper($_GET["ville"]);
-                                $secteur_activite=$_GET["secteur_activite"];
-                                $bdd = new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                                $req_test = $bdd->prepare("SELECT nom_entreprise from entreprise where ville_entreprise=? AND secteur_activite=?;");
-                                $req_test->execute([$ville,$secteur_activite]);
-                                $data = $req_test->fetch();
-                                while ($data) {
-                                    echo " <option value=\"$data[0]\">$data[0]</option> ";
-                                    $data = $req_test->fetch();
-                                }
-                            }
-                            else {
-                                $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                                $req_test=$bdd->prepare("SELECT nom_entreprise from entreprise;");
-                                $req_test->execute();
-                                $data=$req_test->fetch();
 
-                                while($data){
-                                    echo" <option value=\"$data[0]\">$data[0]</option> ";
+                                if (isset($_GET["organisme_delivrance"])){
+                                    $organisme_delivrance=strtoupper($_GET["organisme_delivrance"]);
+
+
+                                    $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                                    $req_test=$bdd->prepare("SELECT nom_qualification from qualification where organisme_delivrance=?;");
+                                    $req_test->execute([$organisme_delivrance]);
                                     $data=$req_test->fetch();
+
+                                    while($data){
+                                        echo" <option value=\"$data[0]\">$data[0]</option> ";
+                                        $data=$req_test->fetch();
+                                    }
+
+                                }
+                                else{
+
+                                    $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+                                    $req_test=$bdd->prepare("SELECT nom_qualification from qualification;");
+                                    $req_test->execute();
+                                    $data=$req_test->fetch();
+
+                                    while($data){
+                                        echo" <option value=\"$data[0]\">$data[0]</option> ";
+                                        $data=$req_test->fetch();
+                                    }
+
                                 }
 
-                            }
-
                             ?>
                         </select>
 
                     </div>
 
-                    <div class="form-group">
 
-                        <label>Sélectionnez votre type de contrat</label>
-
-                        <select name="type_contrat" class="form-control"  required>
-                            <option value=""> Choisissez un type de contrat</option>
-
-                            <?php
-                            $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                            $req_test=$bdd->prepare("SELECT nom_type_contrat from type_contrat_travail;");
-                            $req_test->execute();
-                            $data=$req_test->fetch();
-
-                            while($data){
-                                echo" <option value=\"$data[0]\">$data[0]</option> ";
-                                $data=$req_test->fetch();
-                            }
-                            ?>
-                        </select>
-
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Créer l'expérience professionelle </button>
+                    <button type="submit" class="btn btn-primary"> Créer la qualification </button>
                 </form>
             </div>
         </div>
     </div>
 
 
-    <!--        generation automatique des expériences déja inscrites-->
+    <!--        generation automatique des qualifications déja inscrites-->
 
     <?php
 
     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-    $req=$bdd->prepare("SELECT poste_occupe,experiences_professionnelles.description,date_debut,date_fin,type_contrat,nom_entreprise from experiences_professionnelles INNER JOIN type_contrat_travail on experiences_professionnelles.type_contrat=type_contrat_travail.nom_type_contrat INNER JOIN entreprise on entreprise.id_entreprise=experiences_professionnelles.id_entreprise where email_utilisateur=? ORDER BY date_debut DESC
+    $req=$bdd->prepare("SELECT date_obtention,date_expiration,nom_qualification,organisme_delivrance from jointure_utilisateur_qualifications  INNER JOIN qualification on qualification.id_qualification=jointure_utilisateur_qualifications.id_qualification  where email_utilisateur=? ORDER BY date_obtention DESC
 ");
     $req->execute([$_SESSION["email"]]);
     $data=$req->fetch();
@@ -273,33 +220,36 @@ session_start();
     while($data)
     {
 
-        $poste_occupe=$data[0];
-        $description=$data[1];
-        $date_debut=$data[2];
-        $date_fin=$data[3];
-        $type_contrat=$data[4];
-        $nom_entreprise=$data[5];
+        $date_obtention=$data[0];
+        $date_expiration=$data[1];
+        $nom_qualification=$data[2];
+        $organisme_delivrance=$data[3];
 
 
-        $date = new DateTime($date_debut);
-        $date_debut=$date->format('M Y');
-        $date = new DateTime($date_fin);
-        $date_fin=$date->format('M Y');
+
+        $date = new DateTime($date_obtention);
+        $date_obtention=$date->format('d M Y');
+
+        if($date_expiration!=NULL){
+            $date = new DateTime($date_expiration);
+            $date_expiration=$date->format('d M Y');
+        }
+        else{
+            $date_expiration="Pas de date d'expiration";
+        }
 
         echo"
-            <div class=\"experience_pro\">
+            <div class=\"qualification\">
             <i class=\"fas fa-briefcase\" id='floating_image'></i>
             <div class=\"name\">
-                <b>$nom_entreprise</b>
+                <b>$nom_qualification</b>
             </div>
-            <div class=\"type_contrat\">
-                $poste_occupe/$type_contrat
-            </div>
+            
             <div class=\"date_debut_fin\">
-                $date_debut-$date_fin
+                Date d'obtention: $date_obtention / Date d'expiration : $date_expiration
             </div>
             <div class=\"description\">
-               $description
+               Délivré par : $organisme_delivrance
             </div>
         </div>
            
@@ -310,45 +260,33 @@ session_start();
     ?>
 
 
-    <!--        suppression des expériences_pro ajoutées    -->
+    <!--        suppression des qualifications ajoutées    -->
 
-    <div class="experience_pro">
+    <div class="qualification">
 
 
         <input type="checkbox" id="check_delete">
 
-        <label for="check_delete">Supprimer une expérience professionelle
+        <label for="check_delete">Supprimer une qualification
             <i class="fas fa-trash" id="delete"></i>
         </label>
 
         <div id="delete_form">
 
-            Renseignez les informations contenant l'expérience à supprimer:
-            <form method="post" action="database_update/delete_experience_pro.php">
+            Renseignez les informations contenant la qualification à supprimer:
+            <form method="post" action="database_update/delete_qualification.php">
 
                 <div class="form-group">
 
-                    <label>Poste occupé</label>
-                    <input type="text" class="form-control" name="poste_occupe" placeholder="ex: Manager" required>
+                    <label>Nom de la qualification</label>
 
-                </div>
-
-
-                <div class="form-group">
-
-
-                    <label> Nom de l'entreprise</label>
-
-
-
-                    <select name="nom_entreprise" class="form-control"  required>
-                        <option value=""> Choisissez une entreprise </option>
+                    <select name="nom_qualification" class="form-control"  required>
+                        <option value=""> Choisissez une qualification </option>
 
                         <?php
 
-
                         $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                        $req_test=$bdd->prepare("SELECT nom_entreprise from entreprise;");
+                        $req_test=$bdd->prepare("SELECT nom_qualification from qualification;");
                         $req_test->execute();
                         $data=$req_test->fetch();
 
@@ -362,28 +300,6 @@ session_start();
                     </select>
 
                 </div>
-
-                <div class="form-group">
-
-                    <label>Type de contrat</label>
-
-                    <select name="type_contrat" class="form-control"  required>
-                        <option value=""> Choisissez un type de contrat</option>
-
-                        <?php
-                        $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                        $req_test=$bdd->prepare("SELECT nom_type_contrat from type_contrat_travail;");
-                        $req_test->execute();
-                        $data=$req_test->fetch();
-
-                        while($data){
-                            echo" <option value=\"$data[0]\">$data[0]</option> ";
-                            $data=$req_test->fetch();
-                        }
-                        ?>
-                    </select>
-                </div>
-
 
                 <button type="submit" class="btn btn-primary">Supprimer cette expérience </button>
             </form>
