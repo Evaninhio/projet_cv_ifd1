@@ -57,6 +57,7 @@ body {
 #button_creation{
     position: relative;
     left:25%;
+    color: #34ce57;
 }
 
 ::placeholder{

@@ -240,7 +240,7 @@ session_start();
 
         echo"
             <div class=\"qualification\">
-            <i class=\"fas fa-briefcase\" id='floating_image'></i>
+            <i class=\"fas fa-book\" id='floating_image'></i>
             <div class=\"name\">
                 <b>$nom_qualification</b>
             </div>
