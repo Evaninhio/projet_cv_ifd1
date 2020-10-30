@@ -8,9 +8,6 @@ session_start();
 <!doctype html>
 <html lang="fr">
 
-
-
-
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
@@ -103,34 +100,21 @@ session_start();
 
 
                 <form method="post" action="database_update/insertion_competence.php">
-                    <div class="form-row">
 
 
-                    <div class="form-group col-md-6">
 
-                        <label>Nom de l'entreprise</label>
-                        / Vous ne trouvez pas votre entreprise ? Créez la <a href="database_update/insert_entreprise.php" target="_blank"> ici </a>
+                    <div class="form-group">
 
-                        <select name="nom_entreprise" class="form-control"  required>
-                            <option value=""> Choisissez une entreprise </option>
+                        <label>Nom de votre compétence</label>
+                        / Vous ne trouvez pas votre compétence ? Créez la <a href="database_update/insert_competence.php" target="_blank"> ici </a>
+
+                        <select name="competence" class="form-control"  required>
+                            <option value=""> Choisissez une compétence</option>
 
                             <?php
 
-                            if (isset($_GET["ville"],$_GET["secteur_activite"])) {
-                                $ville = strtoupper($_GET["ville"]);
-                                $secteur_activite=$_GET["secteur_activite"];
-                                $bdd = new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                                $req_test = $bdd->prepare("SELECT nom_entreprise from entreprise where ville_entreprise=? AND secteur_activite=?;");
-                                $req_test->execute([$ville,$secteur_activite]);
-                                $data = $req_test->fetch();
-                                while ($data) {
-                                    echo " <option value=\"$data[0]\">$data[0]</option> ";
-                                    $data = $req_test->fetch();
-                                }
-                            }
-                            else {
                                 $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                                $req_test=$bdd->prepare("SELECT nom_entreprise from entreprise;");
+                                $req_test=$bdd->prepare("SELECT competence from competence;");
                                 $req_test->execute();
                                 $data=$req_test->fetch();
 
@@ -138,9 +122,6 @@ session_start();
                                     echo" <option value=\"$data[0]\">$data[0]</option> ";
                                     $data=$req_test->fetch();
                                 }
-
-                            }
-
                             ?>
                         </select>
 
@@ -148,14 +129,14 @@ session_start();
 
                     <div class="form-group">
 
-                        <label>Sélectionnez votre type de contrat</label>
+                        <label>Sélectionnez votre niveau </label>
 
-                        <select name="type_contrat" class="form-control"  required>
-                            <option value=""> Choisissez un type de contrat</option>
+                        <select name="niveau_competence" class="form-control"  required>
+                            <option value=""> Choisissez un niveau</option>
 
                             <?php
                             $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                            $req_test=$bdd->prepare("SELECT nom_type_contrat from type_contrat_travail;");
+                            $req_test=$bdd->prepare("SELECT nom_niveau_competence from niveau_competence;");
                             $req_test->execute();
                             $data=$req_test->fetch();
 
@@ -168,20 +149,19 @@ session_start();
 
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Créer l'expérience professionelle </button>
+                    <button type="submit" class="btn btn-primary">Créer la compétence</button>
                 </form>
             </div>
         </div>
     </div>
 
 
-    <!--        generation automatique des expériences déja inscrites-->
+    <!--        generation automatique des compétences-->
 
     <?php
 
     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-    $req=$bdd->prepare("SELECT poste_occupe,experiences_professionnelles.description,date_debut,date_fin,type_contrat,nom_entreprise from experiences_professionnelles INNER JOIN type_contrat_travail on experiences_professionnelles.type_contrat=type_contrat_travail.nom_type_contrat INNER JOIN entreprise on entreprise.id_entreprise=experiences_professionnelles.id_entreprise where email_utilisateur=? ORDER BY date_debut DESC
-");
+    $req=$bdd->prepare("SELECT competence.competence,niveau_competence,secteur_competence  from jointure_competence_utilisateur INNER JOIN competence on competence.competence=jointure_competence_utilisateur.competence where email_utilisateur=?;");
     $req->execute([$_SESSION["email"]]);
     $data=$req->fetch();
 
@@ -190,33 +170,22 @@ session_start();
     while($data)
     {
 
-        $poste_occupe=$data[0];
-        $description=$data[1];
-        $date_debut=$data[2];
-        $date_fin=$data[3];
-        $type_contrat=$data[4];
-        $nom_entreprise=$data[5];
-
-
-        $date = new DateTime($date_debut);
-        $date_debut=$date->format('M Y');
-        $date = new DateTime($date_fin);
-        $date_fin=$date->format('M Y');
+        $competence=$data[0];
+        $niveau_competence=$data[1];
+        $secteur_competence=$data[2];
 
         echo"
-            <div class=\"experience_pro\">
-            <i class=\"fas fa-briefcase\" id='floating_image'></i>
+            <div class=\"competence\">
+            <i class=\"fas fa-check\" id=\"floating_image\"></i>
             <div class=\"name\">
-                <b>$nom_entreprise</b>
+                <b>$competence</b>
             </div>
-            <div class=\"type_contrat\">
-                $poste_occupe/$type_contrat
+            <div class=\"type_competence\">
+               $secteur_competence
             </div>
-            <div class=\"date_debut_fin\">
-                $date_debut-$date_fin
-            </div>
-            <div class=\"description\">
-               $description
+            
+            <div class=\"niveau_competence\">
+               $niveau_competence
             </div>
         </div>
            
@@ -227,45 +196,36 @@ session_start();
     ?>
 
 
-    <!--        suppression des expériences_pro ajoutées    -->
+    <!--        suppression des compétences ajoutées   -->
 
-    <div class="experience_pro">
+    <div class="competence">
 
 
         <input type="checkbox" id="check_delete">
 
-        <label for="check_delete">Supprimer une expérience professionelle
+        <label for="check_delete">Supprimer une compétence
             <i class="fas fa-trash" id="delete"></i>
         </label>
 
         <div id="delete_form">
 
-            Renseignez les informations contenant l'expérience à supprimer:
-            <form method="post" action="database_update/delete_experience_pro.php">
-
-                <div class="form-group">
-
-                    <label>Poste occupé</label>
-                    <input type="text" class="form-control" name="poste_occupe" placeholder="ex: Manager" required>
-
-                </div>
-
+            Renseignez les informations contenant la compétence à supprimmer:
+            <form method="post" action="database_update/delete_competence.php">
 
                 <div class="form-group">
 
 
-                    <label> Nom de l'entreprise</label>
+                    <label> Nom de la compétence</label>
 
 
 
-                    <select name="nom_entreprise" class="form-control"  required>
-                        <option value=""> Choisissez une entreprise </option>
+                    <select name="nom_competence" class="form-control"  required>
+                        <option value=""> Choisissez une compétence </option>
 
                         <?php
 
-
                         $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                        $req_test=$bdd->prepare("SELECT nom_entreprise from entreprise;");
+                        $req_test=$bdd->prepare("SELECT competence from competence;");
                         $req_test->execute();
                         $data=$req_test->fetch();
 
@@ -280,29 +240,7 @@ session_start();
 
                 </div>
 
-                <div class="form-group">
-
-                    <label>Type de contrat</label>
-
-                    <select name="type_contrat" class="form-control"  required>
-                        <option value=""> Choisissez un type de contrat</option>
-
-                        <?php
-                        $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                        $req_test=$bdd->prepare("SELECT nom_type_contrat from type_contrat_travail;");
-                        $req_test->execute();
-                        $data=$req_test->fetch();
-
-                        while($data){
-                            echo" <option value=\"$data[0]\">$data[0]</option> ";
-                            $data=$req_test->fetch();
-                        }
-                        ?>
-                    </select>
-                </div>
-
-
-                <button type="submit" class="btn btn-primary">Supprimer cette expérience </button>
+                <button type="submit" class="btn btn-primary">Supprimer cette compétence </button>
             </form>
         </div>
     </div>

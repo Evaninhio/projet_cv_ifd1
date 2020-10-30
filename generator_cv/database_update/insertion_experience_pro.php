@@ -20,7 +20,4 @@ $req=$bdd->prepare("INSERT INTO experiences_professionnelles ( id_entreprise, em
 $req->execute([$id_entreprise,$_SESSION["email"],$date_debut,$date_fin,$description_experience,$poste_occupe,$type_contrat]);
 
 header("Location: ../experience_pro.php");
-
-
-
 ?>
