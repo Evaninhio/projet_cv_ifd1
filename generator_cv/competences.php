@@ -60,7 +60,7 @@ session_start();
 
     <a href="formations_cv.php"><i class="fas fa-graduation-cap"></i><span>Formations</span></a>
 
-    <a href="#"><i class="fas fa-briefcase"></i><span>Expériences professionnelles</span></a>
+    <a href="experience_pro.php"><i class="fas fa-briefcase"></i><span>Expériences professionnelles</span></a>
 
     <a href="experience_benevolat.php"><i class="fas fa-hands-helping"></i><span>Expériences de bénévolat</span></a>
 

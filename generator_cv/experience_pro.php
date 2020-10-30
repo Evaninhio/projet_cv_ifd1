@@ -66,7 +66,7 @@ session_start();
 
                 <a href="experience_benevolat.php"><i class="fas fa-hands-helping"></i><span>Expériences de bénévolat</span></a>
 
-                <a href="#"><i class="fas fa-check"></i><span>Compétences</span></a>
+                <a href="competences.php"><i class="fas fa-check"></i><span>Compétences</span></a>
 
                 <a href="#"><i class="fas fa-language"></i><span>Langues</span></a>
 
