@@ -37,7 +37,7 @@ header{
     width: 280px;
     height: 100%;
     opacity: 90%;
-
+    overflow-y: scroll;
 }
 
 .side_bar .profile_photo{
@@ -78,6 +78,7 @@ label #sidebar_button:hover{
     box-sizing: border-box;
     transition: 0.5s;
     transition-property: background-color;
+
 }
 
 .side_bar span{

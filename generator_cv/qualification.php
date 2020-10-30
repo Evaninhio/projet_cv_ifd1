@@ -209,6 +209,11 @@ session_start();
 
     <?php
 
+
+
+
+
+
     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
     $req=$bdd->prepare("SELECT date_obtention,date_expiration,nom_qualification,organisme_delivrance from jointure_utilisateur_qualifications  INNER JOIN qualification on qualification.id_qualification=jointure_utilisateur_qualifications.id_qualification  where email_utilisateur=? ORDER BY date_obtention DESC
 ");

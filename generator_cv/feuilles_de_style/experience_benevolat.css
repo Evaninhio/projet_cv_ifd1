@@ -37,6 +37,7 @@ header{
     width: 280px;
     height: 100%;
     opacity: 90%;
+    overflow-y: scroll;
 
 }
 
