@@ -121,11 +121,13 @@ label #sidebar_button:hover{
     margin-left: 10px;
     margin-top: 5px;
     width: 45%;
+    background-image: url("../../images/113-1130485_cgi-in-canada-les-images-de-l-entreprise.jpg");
+    background-position: center;
 }
 
 #content_search{
     display: none;
-    background-color: white;
+    background-color:transparent;
     opacity: 90%;
 }
 
@@ -150,6 +152,8 @@ label #search_button{
 label #search_button:hover{
     color: green;
 }
+
+
 
 .ajouter_experience_pro,.experience_pro
 {

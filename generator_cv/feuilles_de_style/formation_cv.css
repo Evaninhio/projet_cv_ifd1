@@ -117,11 +117,13 @@ label #sidebar_button:hover{
     margin-left: 10px;
     margin-top: 5px;
     width: 45%;
+    background-image: url("../../images/fermez-vous-d-un-fond-vide-de-panorama-tableau-vert-école-143476540.jpg");
+    color: white;
 }
 
 #content_search{
     display: none;
-    background-color: white;
+    background-color:transparent;
     opacity: 90%;
 }
 
@@ -140,7 +142,7 @@ label #sidebar_button:hover{
 }
 
 label #search_button{
-    color: #0056b3;
+    color: white;
 }
 
 label #search_button:hover{
@@ -202,7 +204,7 @@ label #search_button:hover{
 }
 
 label #afficher_masquer_button{
-    color: #005cbf;
+    color: white;
 }
 .contenu_ajouter_formation{
     display: none;
