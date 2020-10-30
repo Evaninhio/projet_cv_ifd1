@@ -4,7 +4,7 @@ body{
     padding:0;
     height: 100%;
     width: 100%;
-    background-image: url("../images/pexels-photo-2457284.jpeg");
+    background-image: url("../../images/pexels-photo-2457284.jpeg");
     overflow-y: scroll;
 }
 
@@ -192,13 +192,6 @@ label #search_button:hover{
     text-align: center;
 }
 
-#ajouter_formation_button{
-    color: #005cbf;
-}
-
-#ajouter_formation_button:hover{
-    color: red;
-}
 
 
 #check3{

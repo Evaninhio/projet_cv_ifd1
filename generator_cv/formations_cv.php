@@ -12,7 +12,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="formation_cv.css">
+    <link rel="stylesheet" href="feuilles_de_style/formation_cv.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <title>My Online CV - Créez votre CV en toute simplicité</title>
 </head>
@@ -61,7 +61,7 @@ session_start();
 
                 <a href="experience_pro.php"><i class="fas fa-briefcase"></i><span>Expériences professionnelles</span></a>
 
-                <a href="#"><i class="fas fa-hands-helping"></i><span>Expériences de bénévolat</span></a>
+                <a href="experience_benevolat.php"><i class="fas fa-hands-helping"></i><span>Expériences de bénévolat</span></a>
 
                 <a href="#"><i class="fas fa-check"></i><span>Compétences</span></a>
 
@@ -252,9 +252,9 @@ session_start();
 
 
             $date = new DateTime($date_de_debut);
-            $date_de_debut=$date->format('Y');
+            $date_de_debut=$date->format('M Y');
             $date = new DateTime($date_de_fin);
-            $date_de_fin=$date->format('Y');
+            $date_de_fin=$date->format('M Y');
 
 
 
