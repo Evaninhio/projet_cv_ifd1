@@ -12,7 +12,7 @@ session_start();
     <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="feuilles_de_style/passions.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <title>My Online CV - Créez votre CV en toute simplicité</title>
+    <title>My Online CV - Créez votre CV en toute simplicité / Passions</title>
 </head>
 
 
