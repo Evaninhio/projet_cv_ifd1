@@ -196,7 +196,7 @@ session_start();
     ?>
 
 
-    <!--        suppression des compétences ajoutées   -->
+    <!--   suppression des compétences ajoutées   -->
 
     <div class="competence">
 

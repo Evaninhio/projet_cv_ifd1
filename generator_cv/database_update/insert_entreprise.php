@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My Online CV- INSCRIPTION </title>
-    <link rel="stylesheet" href="insert_ecole_vcss.css">
+    <link rel="stylesheet" href="insert_data_vcss.css">
     <link rel="stylesheet" href="../../bootstrap-4.5.3-dist/css/bootstrap.css">
     <style type="text/css">
         body{
