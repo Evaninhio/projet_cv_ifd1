@@ -197,8 +197,9 @@ label #sidebar_button:hover{
     display:none ;
 }
 
+
 label #afficher_masquer_button{
-    color: white;
+    color: blue;
 }
 .contenu_ajouter_passion{
     display: none;
