@@ -76,8 +76,6 @@ session_start();
 
 
 
-
-
 </div>
 <!--fin du menu vertical-->
 
