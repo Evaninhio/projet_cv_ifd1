@@ -157,12 +157,60 @@ session_start();
     </div>
 
 
+
+    <!--trier les resultats-->
+
+    <div class="sort_by">
+        <input type="checkbox" id="check_sort">
+        <label for="check_sort">
+            Trier les résultats par :
+            <i class="fas fa-bars" id="afficher_masquer_sort_button"></i>
+        </label>
+
+        <div id="content_tri">
+            <form method="get" action="competences.php" id="form_tri">
+                <div class="form-group">
+                    <select name="sorting_options" class="form-control" required>
+                        <option value=""> Choississez une option </option>
+                        <option value="type"> Type de Compétence </option>
+                        <option value="niveau"> Niveau </option>
+                        <option value="alphabetique"> Ordre Alphabétique (Nom Compétence) </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Appliquer les critères</button>
+            </form>
+        </div>
+    </div>
+    <!--fin tri resultats-->
+
+
     <!--        generation automatique des compétences-->
 
     <?php
 
     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-    $req=$bdd->prepare("SELECT competence.competence,niveau_competence,secteur_competence  from jointure_competence_utilisateur INNER JOIN competence on competence.competence=jointure_competence_utilisateur.competence where email_utilisateur=?;");
+
+
+    if (isset($_GET["sorting_options"]))
+    {
+        switch ($_GET["sorting_options"]){
+            case "type":
+                $req=$bdd->prepare("SELECT competence.competence,niveau_competence,secteur_competence  from jointure_competence_utilisateur INNER JOIN competence on competence.competence=jointure_competence_utilisateur.competence where email_utilisateur=? ORDER BY secteur_competence;");
+                break;
+            case "niveau":
+                $req=$bdd->prepare("SELECT competence.competence,niveau_competence,secteur_competence  from jointure_competence_utilisateur INNER JOIN competence on competence.competence=jointure_competence_utilisateur.competence where email_utilisateur=? ORDER BY niveau_competence;");
+                break;
+            case "alphabetique":
+                $req=$bdd->prepare("SELECT competence.competence,niveau_competence,secteur_competence  from jointure_competence_utilisateur INNER JOIN competence on competence.competence=jointure_competence_utilisateur.competence where email_utilisateur=? ORDER BY competence.competence;");
+                break;
+        }
+    }
+    else
+    {
+        $req=$bdd->prepare("SELECT competence.competence,niveau_competence,secteur_competence  from jointure_competence_utilisateur INNER JOIN competence on competence.competence=jointure_competence_utilisateur.competence where email_utilisateur=?;");
+    }
+
+
     $req->execute([$_SESSION["email"]]);
     $data=$req->fetch();
 
