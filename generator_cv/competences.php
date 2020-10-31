@@ -215,7 +215,6 @@ session_start();
     $data=$req->fetch();
 
 
-
     while($data)
     {
 
