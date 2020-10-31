@@ -39,80 +39,51 @@
 
         <ul>
             <li>
-                <label>
                     Nom : <input type="text" name="nom" required/>
-                </label>
-                <br>
-            </li>
-            <li>
-                <label>
-                    Prénom : <input type="text" name="prenom" required/>
-                </label>
-                <br>
             </li>
 
             <li>
-                <label>
+                    Prénom : <input type="text" name="prenom" required/>
+            </li>
+
+            <li>
                     Email : <input type="email" name="email" required placeholder="xxxxxxx@xxxxx.com"/>
                     <!--placeholder permet d'afficher un exemple-->
-                </label>
-                <br>
             </li>
 
             <li>
-                <label>
                     Adresse : <input type="text" name="adresse_actuelle" required  />
-                </label>
-                <br>
             </li>
 
             <li>
-                <label>
                     Ville de residence : <input type="text" name="ville_de_residence" required />
-                </label>
-                <br>
             </li>
 
             <li>
-                <label>
                     Date de naissance: <input type="date" name="date_naissance" value="<?php echo $today = date("Y-m-d")?>" max= "<?php echo $today = date("Y-m-d")?>"  required />
                     <!--on affiche par défaut la date du jour et on bloque la date de naissance minimum à la date du jour-->
-                </label>
-                <br>
             </li>
 
             <li>
-                <label>
                     Mot de passe: <input type="password" name="password" min="8" required>
-                </label>
-                <br>
             </li>
-                <label>
+
+            <li>
                     Lien linkedin: <input type="text" name="lien_linkedin">
-                </label>
-                <br>
-            <li/>
+            </li>
 
 
             <li>
-                <label>
                     Biographie: <TEXTAREA name="biographie" maxlength="200"></TEXTAREA>
-                </label>
-                <br>
             </li>
 
             <li>
-                <label>
                     Numéro de Téléphone: <input type="number"  name="num_telephone" pattern="[0-9]{10}">
                     <!--l'attribut pattern permet de vérifier si lle num de téléphone contient bien 10 chiffres allant de 0 à 9-->
-                </label>
-                <br>
             </li>
 
             <li>
-                <label>
                     Photo de profil: <input type="file" name="photo_profil" accept="image/png" required>
-                </label>
             </li>
         </ul>
 
