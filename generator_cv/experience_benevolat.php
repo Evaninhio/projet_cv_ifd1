@@ -145,9 +145,11 @@ session_start();
     <div class="sort_by">
         <input type="checkbox" id="check_sort">
         <label for="check_sort">
+            <i class="fas fa-filter" id="afficher_masquer_sort_button"></i>
             Trier les résultats par :
-            <i class="fas fa-bars" id="afficher_masquer_sort_button"></i>
         </label>
+
+
 
         <div id="content_tri">
             <form method="get" action="experience_benevolat.php" id="form_tri">
