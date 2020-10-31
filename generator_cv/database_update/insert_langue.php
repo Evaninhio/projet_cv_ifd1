@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../bootstrap-4.5.3-dist/css/bootstrap.css">
     <style type="text/css">
         body{
-            background-image: url("../../images/12969-1538063135-langue-etrangeres.jpg");
+            background-image: url("../../images/langues_2.jpg");
         }
 
 

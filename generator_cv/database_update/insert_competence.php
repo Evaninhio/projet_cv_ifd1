@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../bootstrap-4.5.3-dist/css/bootstrap.css">
     <style type="text/css">
         body{
-            background-image: url("../../images/Illustration-compétences-générales-_-couleurs-SOL.png");
+            background-image: url("../../images/competence_fond_ecran.png");
             background-size: 80%;
         }
 
