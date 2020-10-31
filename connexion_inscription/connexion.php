@@ -15,7 +15,7 @@ session_destroy();
 
 <body class="text-center">
 
-<form class="form-signin" method="post" action="formulaire_connexion.php">
+<form class="form-signin" method="post" action="gestion_formulaire/formulaire_connexion.php">
 
     <img class="mb-4" src="../images/téléchargement.png" alt="logo_site" width="72" height="72">
 

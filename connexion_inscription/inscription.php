@@ -21,7 +21,7 @@
 
 
 
-    <form class="form-signin" method="post" action="formulaire_insert.php">
+    <form class="form-signin" method="post" action="gestion_formulaire/formulaire_insert.php">
         <!--formulaire d'inscription -->
 
 
