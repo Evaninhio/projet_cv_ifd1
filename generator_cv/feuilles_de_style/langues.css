@@ -128,6 +128,10 @@ label #sidebar_button:hover{
 
 }
 
+label #afficher_masquer_button:hover{
+    color: orangered;
+}
+
 .form-group a{
     color: black;
 }

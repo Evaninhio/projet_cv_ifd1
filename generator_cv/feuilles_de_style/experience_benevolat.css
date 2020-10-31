@@ -118,6 +118,10 @@ label #sidebar_button:hover{
     margin-left: 280px;
 }
 
+label #afficher_masquer_button:hover{
+    color: orangered;
+}
+
 .ajouter_experience_benevolat {
     margin-left: 10px;
     margin-top: 5px;

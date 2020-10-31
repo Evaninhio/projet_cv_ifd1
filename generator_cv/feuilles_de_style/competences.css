@@ -179,6 +179,11 @@ label #sidebar_button:hover{
 label #afficher_masquer_button{
     color: #005cbf;
 }
+
+label #afficher_masquer_button:hover{
+    color: orangered;
+}
+
 .contenu_ajouter_competence{
     display: none;
 }

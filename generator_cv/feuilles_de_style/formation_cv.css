@@ -147,7 +147,11 @@ label #search_button{
 }
 
 label #search_button:hover{
-    color: green;
+    color: orangered;
+}
+
+label #afficher_masquer_button:hover{
+    color: orangered;
 }
 
 .ajouter_formation,.formation

@@ -65,7 +65,11 @@ label #sidebar_button{
 }
 
 label #sidebar_button:hover{
-    color: darkblue;
+    color:darkblue;
+}
+
+label #afficher_masquer_button:hover{
+    color: orangered;
 }
 
 
@@ -151,7 +155,7 @@ label #search_button{
 }
 
 label #search_button:hover{
-    color: green;
+    color: orangered;
 }
 
 

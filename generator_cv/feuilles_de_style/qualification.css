@@ -53,6 +53,11 @@ header{
     margin-bottom: 20px;
 }
 
+label #afficher_masquer_button:hover{
+    color: orangered;
+}
+
+
 label #sidebar_button{
     z-index: 1;
     color: white;

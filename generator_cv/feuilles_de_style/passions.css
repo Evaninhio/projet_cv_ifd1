@@ -179,6 +179,10 @@ label #sidebar_button:hover{
     float: left;
 }
 
+label #afficher_masquer_button:hover{
+    color: orangered;
+}
+
 .name{
     font-size: 1em;
     color: darkblue;
