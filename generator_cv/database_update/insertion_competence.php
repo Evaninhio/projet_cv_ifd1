@@ -14,4 +14,5 @@ $req=$bdd->prepare("INSERT INTO jointure_competence_utilisateur(email_utilisateu
 $req->execute([$_SESSION["email"],$competence,$niveau_competence]);
 
 header("Location: ../competences.php");
+
 ?>
