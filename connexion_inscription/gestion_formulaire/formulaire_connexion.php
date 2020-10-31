@@ -11,7 +11,7 @@ $data=$req_test->fetch();
 
 if($data['COUNT(*)']==0)
 {
-    header("Location: connexion.php?error=1");
+    header("Location: ../connexion.php?error=1");
     exit();
 }
 else{
@@ -28,10 +28,7 @@ else{
     $_SESSION["email"]=$email;
 
 
-
-
-
-       header("Location: ../home/home.php?connected");
+       header("Location: ../../home/home.php?connected");
 }
 
 ?>

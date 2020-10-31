@@ -20,7 +20,7 @@ $data=$req_test->fetch();
 
 if($data[0]!=0)
 {
-    header("Location: inscription.php?error=1");
+    header("Location: ../inscription.php?error=1");
     exit();
 }
 else
@@ -34,7 +34,7 @@ else
     $_SESSION["prenom"]=$data["prenom"];
     $_SESSION["nom"]=$data["nom"];
     $_SESSION["photo_profil"]=$data["photo_profil"];
-    header("Location: ../home/home.php?creation_compte");
+    header("Location: ../../home/home.php?creation_compte");
 
 
 }
