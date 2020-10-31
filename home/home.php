@@ -81,6 +81,7 @@ session_start();
                     if(isset($_SESSION["prenom"]))
                     {
                         echo " <li><a href=\"../connexion_inscription/log_out.php\" target=\"_blank\">Déconnexion</a></li>";
+                        //target _blanck permet d'ouvrir le lien sur une nouvelle page
                     }
                ?>
 
