@@ -27,7 +27,7 @@
     <ul>
         <li>
             <label>
-                Nom du diplome : <input type="text" name="nom_type_diplome" required/>
+                Nom du diplome : <input type="text" name="nom_type_diplome" placeholder="ex: DUT Informatique" required/>
             </label>
             <br>
         </li>
