@@ -135,6 +135,9 @@ label #afficher_masquer_button:hover{
 .form-group a{
     color: black;
 }
+header:hover{
+    background: tomato;
+}
 
 .form-group{
     width: 300px;

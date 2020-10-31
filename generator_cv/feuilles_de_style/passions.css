@@ -173,6 +173,9 @@ label #sidebar_button:hover{
     margin-top: 50px;
     width: 700px;
 }
+header:hover{
+    background: tomato;
+}
 
 #floating_image{
     width: 45px;

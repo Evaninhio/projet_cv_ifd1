@@ -56,6 +56,9 @@ header{
 label #afficher_masquer_button:hover{
     color: orangered;
 }
+header:hover{
+    background: tomato;
+}
 
 
 label #sidebar_button{

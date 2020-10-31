@@ -223,6 +223,10 @@ label #afficher_masquer_button{
 #content_tri{
     display: none;
 }
+header:hover{
+    background: tomato;
+}
+
 
 label #afficher_masquer_sort_button:hover{
     color: #34ce57;
