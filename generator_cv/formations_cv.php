@@ -208,11 +208,58 @@ session_start();
             </div>
 
 
+
+            <!--trier les resultats-->
+
+                <div class="sort_by">
+                    <input type="checkbox" id="check_sort">
+                    <label for="check_sort">
+                        Trier les résultats par :
+                        <i class="fas fa-bars" id="afficher_masquer_sort_button"></i>
+                    </label>
+
+                    <div id="content_tri">
+                        <form method="get" action="formations_cv.php" id="form_tri">
+                                <div class="form-group">
+                                    <select name="sorting_options" class="form-control" required>
+                                        <option value=""> Choississez une option </option>
+                                        <option value="croissant"> Du plus ancien au plus récent </option>
+                                        <option value="decroissant"> Du plus récent au plus vieux </option>
+                                        <option value="alphabetique"> Ordre Alphabétique </option>
+                                    </select>
+                                </div>
+                            <button type="submit" class="btn btn-primary">Appliquer les critères</button>
+                        </form>
+                    </div>
+                </div>
+            <!--fin tri resultats-->
+
                 <!-- génération automatique des formations rentrées auparavant par l'utilisateur dans la base de données-->
 
                 <?php
-                    $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-                    $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ORDER BY date_de_debut DESC;");
+                $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
+
+                    if (isset($_GET["sorting_options"]))
+                    {
+                        switch ($_GET["sorting_options"]){
+                            case "croissant":
+                                $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ORDER BY date_de_debut;");
+                                break;
+                            case "decroissant":
+                                $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ORDER BY date_de_debut DESC;");
+                                break;
+                            case "alphabetique":
+                                $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ORDER BY nom_ecole;");
+                                break;
+
+                        }
+                    }
+                    else
+                    {
+                        $req=$bdd->prepare("SELECT intitule_diplome,description_formation,date_de_debut,date_de_fin,nom_type_diplome,nom_ecole from formation INNER JOIN ecole on ecole.id_ecole=formation.id_ecole INNER JOIN type_diplome on type_diplome.id_type_diplome=formation.type_diplome where email_utilisateur=? ORDER BY date_de_debut DESC;");
+                    }
+
+
                     $req->execute([$_SESSION["email"]]);
                     $data=$req->fetch();
 
@@ -229,6 +276,7 @@ session_start();
                         $date_de_debut=$date->format('M Y');
                         $date = new DateTime($date_de_fin);
                         $date_de_fin=$date->format('M Y');
+
 
                         echo"
                         <div class=\"formation\">

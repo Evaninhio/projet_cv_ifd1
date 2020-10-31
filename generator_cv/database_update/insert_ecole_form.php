@@ -18,7 +18,7 @@
         $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
         $req=$bdd->prepare("INSERT INTO ecole (nom_ecole,adresse_ecole,ville_ecole,niveau_etudes,logo_ecole) VALUES (?,?,?,?,?); ");
         $req->execute([$nom_ecole,$adresse_ecole,$ville_ecole,$niveau_etudes,$logo_ecole]);
-        header("Location: formations_cv.php");
+        header("Location: ../formations_cv.php");
 
     }
     else

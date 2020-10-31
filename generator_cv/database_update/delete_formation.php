@@ -26,5 +26,5 @@ session_start();
     $req->execute([$intitule_diplome,$type_diplome,$nom_ecole,$_SESSION["email"]]);
 
 
-    header("Location: formations_cv.php");
+    header("Location: ../formations_cv.php");
 ?>
