@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../bootstrap-4.5.3-dist/css/bootstrap.css">
     <style type="text/css">
         body{
-            background-image: url("../../images/113-1130485_cgi-in-canada-les-images-de-l-entreprise.jpg");
+            background-image: url("../../images/fond_ecran_exeriences_pro.jpg");
 
         }
 
