@@ -106,7 +106,7 @@ slider > * {
 slide:nth-child(1){
     left: 0%;
     animation-delay:-1s;
-    background-image: url("../images/86-modele-cv-parfait.jpg");
+    background-image: url("../images/modele_cv_1.jpg");
     background-size: cover;
     background-position: center;
 }

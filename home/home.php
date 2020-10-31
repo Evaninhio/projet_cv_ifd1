@@ -118,7 +118,7 @@ session_start();
                     <li>Profitez des conseils et astuces de nos experts gratuitement</li>
                 </ul>
 
-                <img id="ex_cv" src="../images/86-modele-cv-parfait.jpg" alt="exemple_cv">
+                <img id="ex_cv" src="../images/modele_cv_1.jpg" alt="exemple_cv">
             </div>
 
             <div id="stat">
@@ -160,7 +160,7 @@ session_start();
             <ul id="bandereau_fin">
                 <li><a href="mailto:corentin.latimier@utbm.fr,evan.denis@utbm.fr">Nous contacter</li>
                 <!--lien de contact par mail-->
-                <li><a href="http://www.utbm.fr"><img src="../images/1200px-Utbm.svg.png" alt="logo_utbm"></li>
+                <li><a href="http://www.utbm.fr"><img src="../images/logo_utbm.png" alt="logo_utbm"></li>
                 <!--lien vers le site ubtm-->
             </ul>
         </div>
