@@ -17,6 +17,10 @@ header{
 
 }
 
+header:hover{
+    background: tomato;
+}
+
 .left_area h1{
     color:white;
     margin:0;
