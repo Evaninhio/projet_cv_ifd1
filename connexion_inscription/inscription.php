@@ -84,7 +84,7 @@
             </li>
 
             <li>
-                    Photo de profil: <input type="file" name="photo_profil" accept="image/png" required>
+                    Photo de profil: <input type="file" name="photo_profil" accept="image/jpg" required>
             </li>
         </ul>
 
