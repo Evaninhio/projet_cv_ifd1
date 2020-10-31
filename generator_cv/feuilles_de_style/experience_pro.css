@@ -233,3 +233,33 @@ label #afficher_masquer_button{
 #delete:hover{
     color: red;
 }
+/*tri des resultats*/
+
+
+#check_sort{
+    display: none;
+}
+
+#check_sort:checked~#content_tri{
+    display: block;
+}
+
+#content_tri{
+    display: none;
+}
+
+label #afficher_masquer_sort_button:hover{
+    color: #34ce57;
+}
+
+.sort_by{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    padding: 5px;
+    background-color: white;
+    opacity: 90%;
+    border-radius: 15px;
+    width: 500px;
+    text-align: center;
+}

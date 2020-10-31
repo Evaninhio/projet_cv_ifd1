@@ -140,16 +140,60 @@ session_start();
     </div>
 
 
+    <!--trier les resultats-->
+
+    <div class="sort_by">
+        <input type="checkbox" id="check_sort">
+        <label for="check_sort">
+            Trier les résultats par :
+            <i class="fas fa-bars" id="afficher_masquer_sort_button"></i>
+        </label>
+
+        <div id="content_tri">
+            <form method="get" action="experience_benevolat.php" id="form_tri">
+                <div class="form-group">
+                    <select name="sorting_options" class="form-control" required>
+                        <option value=""> Choississez une option </option>
+                        <option value="croissant"> Du plus ancien au plus récent </option>
+                        <option value="decroissant"> Du plus récent au plus vieux </option>
+                        <option value="alphabetique"> Ordre Alphabétique (Nom Organisme/Association) </option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Appliquer les critères</button>
+            </form>
+        </div>
+    </div>
+    <!--fin tri resultats-->
+
     <!--        generation automatique des expériences de bénévolat déja inscrites-->
 
     <?php
 
     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
-    $req=$bdd->prepare("SELECT titre_experience,description,date_debut,date_fin,nom_organisme from experience_benevolat where email_utilisateur=? ORDER BY date_debut DESC;");
+
+
+    if (isset($_GET["sorting_options"]))
+    {
+        switch ($_GET["sorting_options"]){
+            case "croissant":
+                $req=$bdd->prepare("SELECT titre_experience,description,date_debut,date_fin,nom_organisme from experience_benevolat where email_utilisateur=? ORDER BY date_debut ;");
+                break;
+            case "decroissant":
+                $req=$bdd->prepare("SELECT titre_experience,description,date_debut,date_fin,nom_organisme from experience_benevolat where email_utilisateur=? ORDER BY date_debut DESC;");
+                break;
+            case "alphabetique":
+                $req=$bdd->prepare("SELECT titre_experience,description,date_debut,date_fin,nom_organisme from experience_benevolat where email_utilisateur=? ORDER BY nom_organisme;");
+                break;
+
+        }
+    }
+    else
+    {
+        $req=$bdd->prepare("SELECT titre_experience,description,date_debut,date_fin,nom_organisme from experience_benevolat where email_utilisateur=? ORDER BY date_debut DESC;");
+    }
+
     $req->execute([$_SESSION["email"]]);
     $data=$req->fetch();
-
-
 
     while($data)
     {
