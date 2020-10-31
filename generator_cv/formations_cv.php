@@ -11,6 +11,7 @@ session_start();
         <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
         <link rel="stylesheet" href="feuilles_de_style/formation_cv.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <!--ce lien permet d'utiliser les icones du site font-awesome-->
         <title>My Online CV - Créez votre CV en toute simplicité / Formations </title>
     </head>
 
@@ -20,6 +21,8 @@ session_start();
     <!--debut menu vertical-->
 
         <input type="checkbox" id="check">
+    <!--ce checkbox permet de gèrer le décalage de la sidebar si il est coché-->
+
 
         <header>
             <label for="check">
@@ -29,11 +32,12 @@ session_start();
             <div class="left_area">
                 <h1> Créer mon CV </h1>
             </div>
-
         </header>
 
+    <!--début du menu vertical-->
         <div class="side_bar">
             <center>
+                <!--on affiche la photo de profil et le prenom de l'utilisateur dans la sidebar-->
                 <?php
                     if(isset($_SESSION["prenom"]))
                     {echo '<img class="profile_photo" src="data:image/png;base64,'.base64_encode( $_SESSION['photo_profil'] ).'"/>';}
@@ -44,6 +48,8 @@ session_start();
                     ?>
                 </h2>
             </center>
+
+            <!--liens vers les autres pages présentes dans la sidebar-->
 
             <a href="#"><i class="fas fa-graduation-cap"></i><span>Formations</span></a>
 
@@ -66,6 +72,7 @@ session_start();
     <!--fin du menu vertical-->
 
         <div class="content">
+        <!--contenu de la page à côté-->
 
             <div class="ajouter_formation">
 
@@ -76,6 +83,7 @@ session_start();
                         Créer une nouvelle formation
                         <i class="fas fa-bars" id="afficher_masquer_button"></i>
                     </label>
+                    <!--ce checkbox pemet de gèrer l'affichage du formulaire si il est coché-->
 
 
                     <div class="contenu_ajouter_formation">
@@ -83,12 +91,14 @@ session_start();
 
                             <!-- debut recherche approfondie des écoles-->
                                 <input type="checkbox" id="check2">
+                        <!--ce checkbox pemet de gèrer l'affichage de la recherche approfondie si il est coché-->
                                 <label for="check2">Recherche approfondie
                                     <i class="fas fa-bars" id="search_button"></i>
                                 </label>
 
                                 <div id="content_search">
                                     <form method="get" action="formations_cv.php">
+                                    <!--le formulaire renverra les variables choisies dans l'url de la page-->
 
                                         <div class="form-row" >
                                             <div class="form-group col-md-6">
@@ -97,12 +107,14 @@ session_start();
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary">Appliquer les critères</button>
+                                        <!--on renvoie la ville choisie dans l'url dans une variable "ville"-->
                                     </form>
                                 </div>
                             <!-- fin recherche approfondie des écoles-->
 
                         <!--formulaire ajout formation dans le cv-->
                         <form method="post" action="database_update/insertion_formation.php">
+                        <!--on récupère les variables nécessaires à l'insertion d'une nouvelle formation dans la base de données-->
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -134,19 +146,25 @@ session_start();
                                     <option value=""> Choisissez une école </option>
 
                                     <?php
+                                    //ce code permet d'afficher toutes les écoles présentes dans la base de données dans les option du select
                                         if (isset($_GET["ville"])) {
+                                            //si l'utilisateur a effectué une recherche approfondie on récupère uniquement les écoles présentes dans la ville choisie
                                             $ville = strtoupper($_GET["ville"]);
                                             $bdd = new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
                                             $req_test = $bdd->prepare("SELECT nom_ecole from ecole where ville_ecole=?;");
                                             $req_test->execute([$ville]);
                                             $data = $req_test->fetch();
 
+
                                             while ($data) {
                                                 echo " <option value=\"$data[0]\">$data[0]</option> ";
                                                 $data = $req_test->fetch();
                                             }
+
+                                            //on affiche les options à l'aide d'une boucle while qui s'arrete quand on  est arrivé à la dernière école trouvée dans la base de données
                                         }
                                         else{
+                                            //meme principe mais plus de conditions sur la ville de l'école -> on affiche toutes les écoles présentes dans la base de données
                                             $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
                                             $req_test=$bdd->prepare("SELECT nom_ecole from ecole;");
                                             $req_test->execute();
@@ -170,6 +188,7 @@ session_start();
 
 
                                     <?php
+                                    //meme principe que pour l'affichage des écoles
                                         $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
                                         $req_test=$bdd->prepare("SELECT nom_type_diplome from type_diplome;");
                                         $req_test->execute();
@@ -187,6 +206,9 @@ session_start();
                     </div>
                 </div>
             </div>
+
+
+                <!-- génération automatique des formations rentrées auparavant par l'utilisateur dans la base de données-->
 
                 <?php
                     $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
@@ -240,6 +262,7 @@ session_start();
 
                 <div id="delete_form">
                     Renseignez les informations contenant la formation à supprimer
+                    <!--les informations dont on a besoin pour cibler précisément la formation sont : l'intitulé du diplome,le nom de l'école,le type de diplome obtenu-->
 
                     <form method="post" action="database_update/delete_formation.php">
                         <div class="form-group">
