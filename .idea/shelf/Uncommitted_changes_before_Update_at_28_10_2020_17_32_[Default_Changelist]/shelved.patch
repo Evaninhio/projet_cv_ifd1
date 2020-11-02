@@ -1,0 +1,481 @@
+Index: generator_cv/insert_school.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- generator_cv/insert_school.php	(date 1603887224293)
++++ generator_cv/insert_school.php	(date 1603887224293)
+@@ -0,0 +1,84 @@
++
++<!DOCTYPE html>
++<html lang="fr">
++
++<head>
++    <meta charset="UTF-8">
++    <title>My Online CV- ajout ecole </title>
++    <link rel="stylesheet" href="insert_school.css">
++    <link rel="stylesheet" href="../bootstrap-4.5.3-dist/css/bootstrap.css">
++    </head>
++
++
++<body class="text_center">
++
++<slider>
++    <slide></slide>
++    <slide></slide>
++    <slide></slide>
++    <slide></slide>
++</slider>
++
++
++
++<form class="form-signin" method="post" action="insert_school_bd.php">
++
++
++
++    <h1 class="mb-3" id="title">Rensignez votre école </h1>
++
++    <div class="error">
++        <?php
++        if (isset($_GET['error']))
++        { echo "<p>Ecole déja présente</p>";
++        }
++        ?>
++    </div>
++
++
++    <!--formulaire inscription nouvel utilisateur-->
++    <ul>
++        <li>
++            <label>
++                Nom : <input type="text" name="nom" required/>
++            </label>
++            <br>
++        </li>
++        <li>
++            <label>
++                adresse : <input type="text" name="adresse" required/>
++            </label>
++            <br>
++        </li>
++
++        <li>
++            <label>
++                ville : <input type="text" name="ville" required/>
++            </label>
++            <br>
++        </li>
++
++        <li>
++            <label>
++                niveau d'étude : <input type="number" name="niveau" required  />
++            </label>
++            <br>
++        </li>
++        <li>
++            <label>
++                logo de l'école: <input type="file" name="logo" accept="image/png" >
++            </label>
++        </li>
++    </ul>
++
++    <input type="submit" id="button_creation" value=" insérer l'école "/>
++</form>
++
++
++</body>
++
++</html
++
++
++
++
+Index: generator_cv/insert_school.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- generator_cv/insert_school.css	(date 1603886309623)
++++ generator_cv/insert_school.css	(date 1603886309623)
+@@ -0,0 +1,81 @@
++html,
++
++*{
++    font-family: "Arial Nova";
++}
++
++body {
++    display: -ms-flexbox;
++    display: flex;
++    -ms-flex-align: center;
++    align-items: center;
++    padding-top: 50px;
++    padding-bottom: 30px;
++    height: 110%;
++    background-image: url("etudiants.jpg");
++    background-position: top;
++    background-size: 100%;
++    width: 150%;
++
++}
++
++.form-signin {
++    width: 100%;
++    max-width: 330px;
++    padding: 15px;
++    margin: auto;
++    opacity: 0.75;
++    background-color: blue;
++}
++
++.form-signin .form-control {
++    position: absolute;
++    top: 40px; left: 40px;
++    box-sizing: border-box;
++    height: auto;
++
++}
++
++
++
++.form-signin input{
++    text-align: left;
++    list-style-type: circle;
++}
++
++#inscription{
++    color: darkred;
++    font-size: 1em;
++}
++
++#error{
++    color:red;
++}
++
++#button_creation{
++    position: relative;
++    left:25%;
++}
++::placeholder{
++    text-align: center;
++}
++
++#title
++{
++    color:darkred;
++    text-align: center;
++}
++
++label{
++    font-size: 0.9em;
++}
++
++ul{
++    list-style-type: none;
++}
++
++
++.error{
++    color: red;
++    text-align: center;
++}
+Index: connexion_inscription/teste2.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- connexion_inscription/teste2.php	(date 1603831648997)
++++ connexion_inscription/teste2.php	(date 1603831648997)
+@@ -0,0 +1,107 @@
++
++<?php
++require('fpdf182\fpdf.php');
++class PDF extends FPDF
++{
++    // En-tête
++    function Header()
++    {
++        // Logo
++        $this->Image('logo.png', 10, 6, 30);
++        // Police Arial gras 15
++        $this->SetFont('Arial', 'B', 20);
++        // Décalage à droite
++        $this->Cell(60);
++        // Titre
++        $this->Cell(60, 10, 'curriculum vitae ', 1, 0, 'C');
++        // Saut de ligne
++        $this->Ln(20);
++    }
++
++// Pied de page
++    function Footer()
++    {
++        // Positionnement à 1,5 cm du bas
++        $this->SetY(-15);
++        // Police Arial italique 8
++        $this->SetFont('Arial', 'I', 8);
++        // Numéro de page
++        $this->Cell(0, 10, ' CV Page ' . $this->PageNo() . '', 0, 0, 'C');
++    }
++    function LoadData($file)
++    {
++        // Lecture des lignes du fichier
++        $lines = file($file);
++        $data = array();
++        foreach($lines as $line)
++            $data[] = explode(';',trim($line));
++
++        return $data;
++    }
++    function FancyTable($header,$dat)
++    {
++        // Couleurs, épaisseur du trait et police grasse
++        $this->SetFillColor(255, 0, 0);
++        $this->SetTextColor(255);
++        $this->SetDrawColor(128, 0, 0);
++        $this->SetLineWidth(.3);
++        $this->SetFont('', 'B');
++        // En-tête
++        $w = array(40, 35, 45, 60);
++        for ($i = 0; $i < count($header); $i++)
++            $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
++        $this->Ln();
++        // Restauration des couleurs et de la police
++        $this->SetFillColor(224, 235, 255);
++        $this->SetTextColor(0);
++        $this->SetFont('');
++        // Données
++        $fill = false;
++       // foreach ($data as $row) {
++            $this->Cell($w[0], 6, $dat[0], 'LR', 0, 'L', $fill);
++            $this->Cell($w[1], 6, $dat[1], 'LR', 0, 'L', $fill);
++            $this->Cell($w[2], 6, $dat[2], 'LR', 0, 'L', $fill);
++            //$this->Cell($w[2], 6, number_format([2], 0, ',', ' '), 'LR', 0, 'R', $fill);
++            $this->Cell($w[3], 6, $dat[3], 'LR', 0, 'L', $fill);
++
++            //$this->Cell($w[3], 6, date($row[3], 0), 'LR', 0, 'L', $fill);
++            $this->Ln();
++            $fill = !$fill;
++       // }
++        // Trait de terminaison
++        $this->Cell(array_sum($w), 0, '', 'T');
++    }
++}
++
++$bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
++$data=0;
++$ecrire=fopen('pays.txt',"w");
++$email = 'corentin.latimier@utbm.fr';
++$sql=$bdd->prepare("SELECT  * FROM utilisateur WHERE email = ?");
++$sql->execute([$email]);
++$data=$sql->fetch();
++
++//if ($dat!=false){
++$dat[3]='\0';
++
++    //$data =  $data['nom']. ';' . $data['prenom'].';'.'0'. $data['num_telephone'] . ';'. $data['adresse_actuelle']; //.$data['date_naissance'];
++$dat[0]=$data['nom'];
++$dat[1]=$data['prenom'];
++$dat[2]=$data['num_telephone'];
++$dat[3]=$data['adresse_actuelle'];
++
++
++//}
++//echo $data;
++//$ecrire=fopen('pays.txt',"a+");
++//fputs($ecrire,$data);
++//fputs($ecrire,"\n");
++$pdf = new PDF();
++$header = array('nom', 'prenom', 'numero ', 'adresse');
++// Chargement des données
++//$data = $pdf->LoadData('pays.txt');
++$pdf->SetFont('Arial','',14);
++$pdf->AddPage();
++
++$pdf->FancyTable($header,$dat);
++$pdf->Output();
+\ No newline at end of file
+Index: connexion_inscription/création_1.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- connexion_inscription/création_1.php	(date 1603831648990)
++++ connexion_inscription/création_1.php	(date 1603831648990)
+@@ -0,0 +1,123 @@
++
++<?php
++require('fpdf182\fpdf.php');
++class PDF extends FPDF
++{
++    // En-tête
++    function Header()
++    {
++        // Logo
++        $this->Image('logo.png', 10, 6, 30);
++        // Police Arial gras 15
++        $this->SetFont('Arial', 'B', 20);
++        // Décalage à droite
++        $this->Cell(60);
++        // Titre
++        $this->Cell(60, 10, 'curriculum vitae ', 1, 0, 'C');
++        // Saut de ligne
++        $this->Ln(20);
++    }
++
++// Pied de page
++    function Footer()
++    {
++        // Positionnement à 1,5 cm du bas
++        $this->SetY(-15);
++        // Police Arial italique 8
++        $this->SetFont('Arial', 'I', 8);
++        // Numéro de page
++        $this->Cell(0, 10, ' CV Page ' . $this->PageNo() . '', 0, 0, 'C');
++    }
++    function LoadData($file)
++    {
++        // Lecture des lignes du fichier
++        $lines = file($file);
++        $data = array();
++        foreach($lines as $line)
++            $data[] = explode(';',trim($line));
++
++        return $data;
++    }
++    function FancyTable($header,$dat)
++    {
++        // Couleurs, épaisseur du trait et police grasse
++        $this->SetFillColor(255, 0, 0);
++        $this->SetTextColor(255);
++        $this->SetDrawColor(128, 0, 0);
++        $this->SetLineWidth(.3);
++        $this->SetFont('', 'B');
++        // En-tête
++        $w = array(40, 35, 45, 60);
++        for ($i = 0; $i < count($header); $i++)
++            $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
++        $this->Ln();
++        // Restauration des couleurs et de la police
++        $this->SetFillColor(224, 235, 255);
++        $this->SetTextColor(0);
++        $this->SetFont('');
++        // Données
++        $fill = false;
++        // foreach ($data as $row) {
++        $this->Cell($w[0], 6, $dat[0], 'LR', 0, 'L', $fill);
++        $this->Cell($w[1], 6, $dat[1], 'LR', 0, 'L', $fill);
++        $this->Cell($w[2], 6, $dat[2], 'LR', 0, 'L', $fill);
++        //$this->Cell($w[2], 6, number_format([2], 0, ',', ' '), 'LR', 0, 'R', $fill);
++        $this->Cell($w[3], 6, $dat[3], 'LR', 0, 'L', $fill);
++
++        //$this->Cell($w[3], 6, date($row[3], 0), 'LR', 0, 'L', $fill);
++        $this->Ln();
++        $fill = !$fill;
++        // }
++        // Trait de terminaison
++        $this->Cell(array_sum($w), 0, '', 'T');
++    }
++}
++
++$bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
++$data=0;
++$ecrire=fopen('pays.txt',"w");
++$email = 'corentin.latimier@utbm.fr';
++$sql=$bdd->prepare("SELECT  * FROM utilisateur WHERE email = ?");
++$sql->execute([$email]);
++$data=$sql->fetch();
++
++//if ($dat!=false){
++$dat[3]='\0';
++
++//$data =  $data['nom']. ';' . $data['prenom'].';'.'0'. $data['num_telephone'] . ';'. $data['adresse_actuelle']; //.$data['date_naissance'];
++$dat[0]=$data['nom'];
++$dat[1]=$data['prenom'];
++$dat[2]=$data['num_telephone'];
++$dat[3]=$data['adresse_actuelle'];
++$pdf = new PDF();
++
++//}
++//echo $data;
++//$ecrire=fopen('pays.txt',"a+");
++//fputs($ecrire,$data);
++//fputs($ecrire,"\n");
++$header = array('nom', 'prenom', 'numero ', 'adresse');
++// Chargement des données
++//$data = $pdf->LoadData('pays.txt');
++$pdf->SetFont('Arial','',14);
++$pdf->AddPage();
++
++$pdf->FancyTable($header,$dat);
++
++/*$pdf->SetDrawColor(200, 152, 20);
++$pdf->SetFillColor(200,50,200);*/
++//$pdf->SetLineWidth(40);
++ //$pdf->rect(5, 10, 50, 100, []);
++$pdf->SetXY(5,30);
++
++$pdf->Cell(50 , 100, '', 1, 1, 'C', true,'' );
++
++$pdf->Image('pikachu.jpg', 10, 35 ,30,30,'jpg', '');
++$pdf->SetXY(7,70);
++$pdf->Cell(10, 6, "NOM: $dat[0]", 0, 1, 'L', '');
++$pdf->SetX(7);
++
++$pdf->Cell(10, 6, "Prenom: $dat[1]", 0, 1, 'L', '');
++//$pdf->Cell(10, 6, "NOM: $dat[0]", 0, 1, 'L', '');
++//$pdf->Cell(10, 6, "NOM: $dat[0]", 0, 1, 'L', '');
++$pdf->Output();
+\ No newline at end of file
+Index: generator_cv/insert_school_bd.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- generator_cv/insert_school_bd.php	(date 1603887319754)
++++ generator_cv/insert_school_bd.php	(date 1603887319754)
+@@ -0,0 +1,43 @@
++<?php
++
++
++$nom=strtoupper($_POST["nom"]);
++$adresse=strtoupper($_POST["adresse"]);
++$ville=strtoupper($_POST["ville"]);
++$niveau=$_POST["niveau"];
++$logo=$_POST["logo"];
++
++
++
++$bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
++$req_test=$bdd->prepare("SELECT nom_ecole from ecole where nom_ecole=$nom");
++$req_test->execute();
++$data=$req_test->fetch();
++
++if($data[0]!=False)
++{
++    header("Location: inscription.php?error=1");
++    exit();
++}
++else
++{
++
++    $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
++    $req_test=$bdd->prepare("SELECT id_ecole FROM ecole where id_ecole=(Select max(id_ecole)from ecole)");
++    $req_test->execute();
++    $data=$req_test->fetch();
++    $test=$data['id_ecole'];
++    $test=$test+1;
++ echo $test;
++    $bdd= new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
++
++    $req=$bdd->prepare("INSERT INTO ecole VALUES ('$test','$nom','$adresse','$ville','$niveau','$logo')");
++    $req->execute();
++
++
++
++
++
++}
++
++?>
+\ No newline at end of file

@@ -1,0 +1,274 @@
+Index: connexion_inscription/création_1.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- connexion_inscription/création_1.php	(date 1603820710379)
++++ connexion_inscription/création_1.php	(date 1603820710379)
+@@ -0,0 +1,149 @@
++<?php
++require('fpdf182\fpdf.php');
++
++/*$pdf = new FPDF();
++$pdf->AddPage();
++$pdf->SetFont('Arial','B',16);
++$pdf->Cell(40,10,'Hello World !');
++$pdf->Output();
++$pdf->Cell(40,10,'Hello World !',1);*/
++
++
++
++class PDF extends FPDF
++{
++// Chargement des données
++    function LoadData($file)
++    {
++        // Lecture des lignes du fichier
++            $lines = file($file);
++        $data = array();
++        foreach($lines as $line)
++            $data[] = explode(';',trim($line));
++        return $data;
++    }
++
++// Tableau simple
++    function BasicTable($header, $data)
++    {
++        // En-tête
++        foreach($header as $col)
++            $this->Cell(40,7,$col,1);
++        $this->Ln();
++        // Données
++        foreach($data as $row)
++        {
++            foreach($row as $col)
++                $this->Cell(40,6,$col,1);
++            $this->Ln();
++        }
++    }
++
++// Tableau amélioré
++    function ImprovedTable($header, $data)
++    {
++        // Largeurs des colonnes
++        $w = array(40, 35, 45, 40);
++        // En-tête
++        for($i=0;$i<count($header);$i++)
++            $this->Cell($w[$i],7,$header[$i],1,0,'C');
++        $this->Ln();
++        // Données
++        foreach($data as $row)
++        {
++            $this->Cell($w[0],6,$row[0],'LR');
++            $this->Cell($w[1],6,$row[1],'LR');
++            $this->Cell($w[2],6,number_format($row[2],0,',',' '),'LR',0,'R');
++            $this->Cell($w[3],6,number_format($row[3],0,',',' '),'LR',0,'R');
++            $this->Ln();
++        }
++        // Trait de terminaison
++        $this->Cell(array_sum($w),0,'','T');
++    }
++
++// Tableau coloré
++    function FancyTable($header, $data)
++    {
++        // Couleurs, épaisseur du trait et police grasse
++        $this->SetFillColor(255,0,0);
++        $this->SetTextColor(255);
++        $this->SetDrawColor(128,0,0);
++        $this->SetLineWidth(.3);
++        $this->SetFont('','B');
++        // En-tête
++        $w = array(40, 35, 45, 40);
++        for($i=0;$i<count($header);$i++)
++            $this->Cell($w[$i],7,$header[$i],1,0,'C',true);
++        $this->Ln();
++        // Restauration des couleurs et de la police
++        $this->SetFillColor(224,235,255);
++        $this->SetTextColor(0);
++        $this->SetFont('');
++        // Données
++        $fill = false;
++        foreach($data as $row)
++        {
++            $this->Cell($w[0],6,$row[0],'LR',0,'L',$fill);
++            $this->Cell($w[1],6,$row[1],'LR',0,'L',$fill);
++            $this->Cell($w[2],6,number_format($row[2],0,',',' '),'LR',0,'R',$fill);
++            $this->Cell($w[3],6,number_format($row[3],0,',',' '),'LR',0,'R',$fill);
++            $this->Ln();
++            $fill = !$fill;
++        }
++        // Trait de terminaison
++        $this->Cell(array_sum($w),0,'','T');
++    }
++}
++
++// Titres des colonnes
++/*$header = array('formation', 'établissement', 'année', 'note');
++// Chargement des données
++$data = $pdf->LoadData('pays.txt');
++$pdf->SetFont('Arial','',14);
++$pdf->AddPage();
++
++$pdf->FancyTable($header,$data);
++$pdf->Output();*/
++
++
++
++class PDF2 extends FPDF
++{
++// En-tête
++    function Header()
++    {
++        // Logo
++        $this->Image('logo.png', 10, 6, 30);
++        // Police Arial gras 15
++        $this->SetFont('Arial', 'B', 15);
++        // Décalage à droite
++        $this->Cell(80);
++        // Titre
++        $this->Cell(30, 10, 'Titre', 1, 0, 'C');
++        // Saut de ligne
++        $this->Ln(20);
++    }
++
++// Pied de page
++    function Footer()
++    {
++        // Positionnement à 1,5 cm du bas
++        $this->SetY(-15);
++        // Police Arial italique 8
++        $this->SetFont('Arial', 'I', 8);
++        // Numéro de page
++        $this->Cell(0, 10, 'Page ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
++    }
++}
++
++// Instanciation de la classe dérivée
++$pdf = new PDF2();
++$pdf->AliasNbPages();
++$pdf->AddPage();
++$pdf->SetFont('Times', '', 12);
++for ($i = 1; $i <= 40; $i++)
++    $pdf->Cell(0, 10, 'Impression de la ligne numéro ' . $i, 0, 1);
++$pdf->Output();
++
++
++?>
+\ No newline at end of file
+Index: connexion_inscription/teste2.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- connexion_inscription/teste2.php	(date 1603822711293)
++++ connexion_inscription/teste2.php	(date 1603822711293)
+@@ -0,0 +1,107 @@
++
++<?php
++require('fpdf182\fpdf.php');
++class PDF extends FPDF
++{
++    // En-tête
++    function Header()
++    {
++        // Logo
++        $this->Image('logo.png', 10, 6, 30);
++        // Police Arial gras 15
++        $this->SetFont('Arial', 'B', 20);
++        // Décalage à droite
++        $this->Cell(60);
++        // Titre
++        $this->Cell(60, 10, 'curriculum vitae ', 1, 0, 'C');
++        // Saut de ligne
++        $this->Ln(20);
++    }
++
++// Pied de page
++    function Footer()
++    {
++        // Positionnement à 1,5 cm du bas
++        $this->SetY(-15);
++        // Police Arial italique 8
++        $this->SetFont('Arial', 'I', 8);
++        // Numéro de page
++        $this->Cell(0, 10, ' CV Page ' . $this->PageNo() . '', 0, 0, 'C');
++    }
++    function LoadData($file)
++    {
++        // Lecture des lignes du fichier
++        $lines = file($file);
++        $data = array();
++        foreach($lines as $line)
++            $data[] = explode(';',trim($line));
++
++        return $data;
++    }
++    function FancyTable($header,$dat)
++    {
++        // Couleurs, épaisseur du trait et police grasse
++        $this->SetFillColor(255, 0, 0);
++        $this->SetTextColor(255);
++        $this->SetDrawColor(128, 0, 0);
++        $this->SetLineWidth(.3);
++        $this->SetFont('', 'B');
++        // En-tête
++        $w = array(40, 35, 45, 60);
++        for ($i = 0; $i < count($header); $i++)
++            $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
++        $this->Ln();
++        // Restauration des couleurs et de la police
++        $this->SetFillColor(224, 235, 255);
++        $this->SetTextColor(0);
++        $this->SetFont('');
++        // Données
++        $fill = false;
++       // foreach ($data as $row) {
++            $this->Cell($w[0], 6, $dat[0], 'LR', 0, 'L', $fill);
++            $this->Cell($w[1], 6, $dat[1], 'LR', 0, 'L', $fill);
++            $this->Cell($w[2], 6, $dat[2], 'LR', 0, 'L', $fill);
++            //$this->Cell($w[2], 6, number_format([2], 0, ',', ' '), 'LR', 0, 'R', $fill);
++            $this->Cell($w[3], 6, $dat[3], 'LR', 0, 'L', $fill);
++
++            //$this->Cell($w[3], 6, date($row[3], 0), 'LR', 0, 'L', $fill);
++            $this->Ln();
++            $fill = !$fill;
++       // }
++        // Trait de terminaison
++        $this->Cell(array_sum($w), 0, '', 'T');
++    }
++}
++
++$bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");
++$data=0;
++$ecrire=fopen('pays.txt',"w");
++$email = 'corentin.latimier@utbm.fr';
++$sql=$bdd->prepare("SELECT  * FROM utilisateur WHERE email = ?");
++$sql->execute([$email]);
++$data=$sql->fetch();
++
++//if ($dat!=false){
++$dat[3]='\0';
++
++    //$data =  $data['nom']. ';' . $data['prenom'].';'.'0'. $data['num_telephone'] . ';'. $data['adresse_actuelle']; //.$data['date_naissance'];
++$dat[0]=$data['nom'];
++$dat[1]=$data['prenom'];
++$dat[2]=$data['num_telephone'];
++$dat[3]=$data['adresse_actuelle'];
++
++
++//}
++//echo $data;
++//$ecrire=fopen('pays.txt',"a+");
++//fputs($ecrire,$data);
++//fputs($ecrire,"\n");
++$pdf = new PDF();
++$header = array('nom', 'prenom', 'numero ', 'adresse');
++// Chargement des données
++//$data = $pdf->LoadData('pays.txt');
++$pdf->SetFont('Arial','',14);
++$pdf->AddPage();
++
++$pdf->FancyTable($header,$dat);
++$pdf->Output();
+\ No newline at end of file
