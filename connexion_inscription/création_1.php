@@ -1,6 +1,7 @@
 
 <?php
 require('fpdf182\fpdf.php');
+/* permet de réaliser l'entete du pdf, prend en parametre le pdf ainsi qu'un tableau contenant plusisuers sortes de données*/
 function entete($pdf,$dat,$data)
 {
     // Logo
@@ -29,9 +30,6 @@ function entete($pdf,$dat,$data)
     $pdf->Cell(70, 10, "$dat[6] ", 0, 0, 'c', '');
     $pdf->Ln(30);
 
-    // Titre
-    // $this->Cell(60, 10, 'curriculum vitae ', 1, 0, 'C');
-    // Saut de ligne
 }
 function remplace($texte){
     $texte=str_replace("à","a",$texte);
@@ -40,6 +38,8 @@ function remplace($texte){
     $texte=str_replace("è","e",$texte);
     return $texte;
 }
+/*fonction permettant d'ecrire un texte ainsi qu'une en tête de de ce même texte dans un tableau situé à gauche du pdf
+prend en parametre: un pdf, deux string */
 function ajoutableaugauche($pdf,$entete,$texte){
     $pdf->SetrightMargin(115);
     $pdf->SetleftMargin(200);
@@ -53,6 +53,8 @@ function ajoutableaugauche($pdf,$entete,$texte){
     $pdf->SetrightMargin(0);
     $pdf->SetleftMargin(0);
 }
+/*fonction permettant d'ecrire un texte ainsi qu'une en tête de de ce même texte dans un tableau situé sur toute la longueur du pdf
+prend en parametre: un pdf, deux string */
 function ajoutableaulong($pdf,$entete,$texte){
 
 
@@ -63,6 +65,10 @@ function ajoutableaulong($pdf,$entete,$texte){
     $pdf->ln(2);
     $pdf->SetX(6);
 }
+
+
+/*fonction permettant d'ecrire un texte ainsi qu'une en tête de de ce même texte dans un tableau situé à droite du pdf
+prend en parametre: un pdf, deux string */
 function ajoutableaudroit($pdf,$entete,$texte){
     $pdf->SetrightMargin(0);
     $pdf->SetleftMargin(115);
@@ -77,10 +83,7 @@ function ajoutableaudroit($pdf,$entete,$texte){
 }
 class PDF extends FPDF
 {
-    // En-tête
-
-
-// Pied de page
+    //bas de page
     function Footer()
     {
         // Positionnement à 1,5 cm du bas
@@ -89,50 +92,6 @@ class PDF extends FPDF
         $this->SetFont('Arial', 'I', 8);
         // Numéro de page
         $this->Cell(0, 10, ' CV Page ' . $this->PageNo() . '', 0, 0, 'C');
-    }
-    function LoadData($file)
-    {
-        // Lecture des lignes du fichier
-        $lines = file($file);
-        $data = array();
-        foreach($lines as $line)
-            $data[] = explode(';',trim($line));
-
-        return $data;
-    }
-    function FancyTable($header,$data,$data2)
-    {
-        // Couleurs, épaisseur du trait et police grasse
-        $this->SetFillColor(255, 0, 0);
-        $this->SetTextColor(255);
-        $this->SetDrawColor(128, 0, 0);
-        $this->SetLineWidth(.3);
-        $this->SetFont('', 'B');
-        // En-tête
-        $w = array(20, 40, 80, 20,20,0);
-        for ($i = 0; $i < count($header); $i++)
-            $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
-        $this->Ln();
-        // Restauration des couleurs et de la police
-        $this->SetFillColor(224, 235, 255);
-        $this->SetTextColor(0);
-        $this->SetFont('');
-        // Données
-        //$fill = false;
-        // foreach ($data as $row) {
-
-        $this->Cell($w[0], 6, $data['intitule_diplome'], 'LR', 0, 'L', '');
-        $this->Cell($w[1], 6, $data2['nom_type_diplome'], 'LR', 0, 'L', '');
-        $this->Cell($w[2], 6, $data['description_formation'], 'LR', 0, 'L', '');
-        //$this->Cell($w[2], 6, number_format([2], 0, ',', ' '), 'LR', 0, 'R', $fill);
-        $this->Cell($w[4], 6,$data['date_de_debut'], 'LR', 0, 'L', '');
-        $this->Cell($w[5], 6, $data['date_de_debut'], 'LR', 0, 'L', '');
-
-        //$this->Cell($w[3], 6, date($row[3], 0), 'LR', 0, 'L', $fill);
-        $this->Ln();
-        // }
-        // Trait de terminaison
-        $this->Cell(array_sum($w), 0, '', 'T');
     }
 }
 $bdd=new PDO("mysql:host=localhost;dbname=cv_generator;charset=utf8", "root", "");

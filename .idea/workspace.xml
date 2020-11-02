@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="470cb5b7-394c-405e-b9e3-cac6977cbf05" name="Default Changelist" comment="pdf2 la suitedddddd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/connexion_inscription/Pikachu.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/connexion_inscription/mail.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/connexion_inscription/création_1.php" beforeDir="false" afterPath="$PROJECT_DIR$/connexion_inscription/création_1.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +93,7 @@
       <workItem from="1604215941296" duration="11814000" />
       <workItem from="1604308438711" duration="8258000" />
       <workItem from="1604327442204" duration="266000" />
+      <workItem from="1604327743408" duration="1070000" />
     </task>
     <task id="LOCAL-00001" summary="mode email">
       <created>1603471515383</created>
@@ -116,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604327536856</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="pdf2 la suitedddddd">
+      <created>1604327776694</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604327776694</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +158,8 @@
     <MESSAGE value="pdf" />
     <MESSAGE value="pdf2 la suite" />
     <MESSAGE value="new change" />
-    <option name="LAST_COMMIT_MESSAGE" value="new change" />
+    <MESSAGE value="pdf2 la suitedddddd" />
+    <option name="LAST_COMMIT_MESSAGE" value="pdf2 la suitedddddd" />
   </component>
   <component name="WindowStateProjectService">
     <state x="475" y="55" key="#PHP" timestamp="1603470618510">
@@ -174,10 +182,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="555" y="60" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1603786631142" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604327536871">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1604327799175">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604327536871" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1604327799175" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604216089230">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
