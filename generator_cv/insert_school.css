@@ -1,0 +1,81 @@
+
+
+*{
+    font-family: "Arial Nova";
+}
+
+body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    height: 110%;
+    background-image: url("etudiants.jpg");
+    background-position: top;
+    background-size: 100%;
+    width: 150%;
+
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    opacity: 0.75;
+    background-color: white;
+}
+
+.form-signin .form-control {
+    position: absolute;
+    top: 40px; left: 40px;
+    box-sizing: border-box;
+    height: auto;
+
+}
+
+
+
+.form-signin input{
+    text-align: left;
+    list-style-type: circle;
+}
+
+#inscription{
+    color: darkred;
+    font-size: 1em;
+}
+
+#error{
+    color:red;
+}
+
+#button_creation{
+    position: relative;
+    left:25%;
+}
+::placeholder{
+    text-align: center;
+}
+
+#title
+{
+    color:darkred;
+    text-align: center;
+}
+
+label{
+    font-size: 0.9em;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+.error{
+    color: red;
+    text-align: center;
+}
